@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+<!--    <link rel="stylesheet" type="text/css" href="stylesheet.css">-->
     <title>index</title>
 
     <style>
         .mnt {
             background-image : linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://www.itl.cat/pngfile/big/4-48215_full-hd-wallpapers-nature-mountain-hd.jpg");
             background-color: #cccccc;
-            height: 930px;
+            height: 852px;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -33,7 +33,7 @@
             display: block;
             color: black;
             text-align: center;
-            padding: 14px 16px;
+            padding: 12px 16px;
             text-decoration: none;
         }
 
@@ -44,25 +44,24 @@
         .active {
             background-color: saddlebrown;
         }
-
-
     </style>
 </head>
 <body>
     <ul>
-    <li><a class="active" href="/">Home</a></li>
-    <li><a href="booking">Create Booking</a></li>
-    <li><a href="cancel">Cancel Booking</a></li>
-    <li style="float:right"><a href="about">About</a></li>
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="booking">Create Booking</a></li>
+            <li><a href="cancel">Cancel Booking</a></li>
+            <li style="float:right"><a href="about">About</a></li>
     </ul>
 
 <div class="mnt">
     <br>
     <div style="text-align: center; font-size: 45px; font-family: Calibri; font-weight: bold; color: darkslategrey; padding-top: 40px " >Welcome to Nordic Motor Home </div>
-
-    <img style="padding-top: 529px; padding-right: 200px;  transform: scaleX(-1)" src="https://newmar.imgix.net/wp-content/uploads/2019/06/02120526/2020-mountain-aire-navigation-image.png?auto=compress,format&crop=edges&fit=crop" alt="" >
+<!--    <tr th:each="booking: ${bookings}">-->
+<!--        <td th:text="${booking.id}"> </td>-->
+<!--        <td></td>-->
+<!--    </tr>-->
+    <img style="padding-top: 466px; padding-right: 200px;  transform: scaleX(-1)" src="https://newmar.imgix.net/wp-content/uploads/2019/06/02120526/2020-mountain-aire-navigation-image.png?auto=compress,format&crop=edges&fit=crop" alt="" >
 </div>
-<!-- hello benjizz ---!>
-
 </body>
 </html>
