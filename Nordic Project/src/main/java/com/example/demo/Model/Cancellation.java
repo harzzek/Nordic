@@ -8,7 +8,7 @@ public class Cancellation {
     }
     public int calculateFee()
     {
-
+        return 0;
     }
 
 }
