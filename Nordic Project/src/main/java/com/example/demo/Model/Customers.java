@@ -18,7 +18,12 @@ public class Customers {
         return customerMapper.list();
     }
 
-    public boolean update()
+    public void create(int customerPhone, String fname, String lname, String email){
+        Customer customer = new Customer( customerPhone, fname, lname, email);
+        customerMapper.create(customer);
+    }
+
+    public boolean update(int customerPhone, String fname, String lname, String email)
     {
         return true;
     }

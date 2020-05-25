@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class MotorhomeMapper extends DatabaseManager
 {
-    Motorhomes motorhomes = new Motorhomes();
     PreparedStatement statement;
 
     public void create(Motorhome motorhome)

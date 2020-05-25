@@ -6,6 +6,9 @@ import com.example.demo.Model.Motorhomes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class HomeController {
@@ -42,6 +45,20 @@ public class HomeController {
         return "create";
     }
 
-    @GetMapping("/createCustomer")
-    public String createCustomer() { return "createCustomer"; }
+    @GetMapping("/cc")
+    public String cc(Model model) {
+        model.addAttribute("customers", new Customers().create());
+        return "cc";
+    }
+    @PostMapping("/cc")
+    public String create(HttpServletRequest request)  {
+        String fName = request.getParameter("customerFname");
+        String lName = request.getParameter("customerLname");
+        String phoneNr = request.getParameter("customerPhone");
+        int realPhoneNr = Integer.parseInt(phoneNr);
+        String email = request.getParameter("customerEmail");
+        customers.create(realPhoneNr, fName, lName, email);
+        return "redirect:/";
+    }
+
 }
