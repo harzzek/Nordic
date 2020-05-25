@@ -45,7 +45,7 @@ public class HomeController {
     {
         return "create";
     }
-    //test
+
     @GetMapping("/cc")
     public String cc(Model model) {
         model.addAttribute("customers", new Customer());
