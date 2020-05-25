@@ -38,7 +38,7 @@ public class BookingMapper
     public Booking findBooking(int phoneNr)
     {
         ResultSet rs;
-        Booking theBooking = null;
+        Booking theBooking = bookings.sendSheet;
         try {
             PreparedStatement statement = getConnection().prepareStatement("SELECT * from bookings where customerPhone = ?");
             rs = statement.executeQuery();

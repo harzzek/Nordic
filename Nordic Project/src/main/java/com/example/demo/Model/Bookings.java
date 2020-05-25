@@ -10,25 +10,24 @@ public class Bookings
     {
         Booking newBooking = new Booking();
         return bookingMapper.findBooking(phoneNr);
+    }
 
-    public Booking readAll(){
+        public Booking readAll()
+    {
         return Booking;
     }
-    public boolean update(Booking booking){
+        public boolean update( Booking booking){
         return false;
     }
-    public boolean delete(int phone){
+        public boolean delete(int phone){
         return false;
     }
 
-    public Booking sendSheet()
-    {
-        return new Booking();
-    }
 
-    @Override
+
     public String toString()
     {
         return null;
     }
+
 }
