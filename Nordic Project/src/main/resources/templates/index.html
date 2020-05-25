@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta charset="UTF-8">
 
     <title>index</title>
-
     <style>
         .mnt {
             background-image : url("https://wallpaperspit.com/wp-content/uploads/2017/11/Mountain-HD-Wallpapers-1080p.jpeg");
@@ -60,6 +57,52 @@
             color: white;
             background-color: slategray;
         }
+        /* Buttons */
+        /* https://www.w3schools.com/css/css3_buttons.asp */
+
+        .btn {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 7px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            border-radius: 5px; /* https://www.w3schools.com/css/css3_borders.asp */
+            box-shadow: 1px 1px 1px #888888;
+            -webkit-transition-duration: 0.1s; /* Safari */
+            transition-duration: 0.1s;
+        }
+
+        .btn-create {
+            background-color: #2f4f4f;
+        }
+
+        /* Green */
+        .btn-details {
+            background-color: #555555;
+        }
+
+        /* Black */
+        .btn-ed {
+            background-color: #008CBA;
+        }
+
+        /* red */
+        .btn-del {
+            background-color: #f44336;
+        }
+
+        /* Red */
+
+        .btn:hover {
+            box-shadow: 2px 2px 2px #888888;
+        }
+
+        .w {
+            width: 20%;
+        }
     </style>
 </head>
 <body>
@@ -77,33 +120,30 @@
 
     </p>
 
-
     <br><br><br>
+
+    <p align="center"><a href="/cancel" class="btn btn-create">Create</a></p>
+
     <table id="t01" style="border:1px solid black;margin-left:auto;margin-right:auto;" >
+        <thread>
         <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Age</th>
-            <th>Penis size</th>
+            <th>ID</th>
+            <th>firstName</th>
+            <th>lastName</th>
+            <th>Booking Date</th>
+            <th>Motorhome</th>
         </tr>
-        <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-            <td>N/A</td>
+        </thread>
+        <tbody>
+        <tr th:each="booking: ${bookings}">
+            <!--/*@thymesVar id="bookingId" type=""*/-->
+            <td th:text="${booking.bookingId}"></td>
+            <td th:text="${booking.firstName}"></td>
+            <td th:text="${booking.lastName}"></td>
+            <td th:text="${#temporals.format(booking.bookingDate, 'd MMMM yyyy')}"/><!-- https://www.baeldung.com/dates-in-thymeleaf -->
+            <td th:text="${booking.Motorhome}"></td>
         </tr>
-        <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-            <td>N/A</td>
-        </tr>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>80</td>
-            <td>8 Inches</td>
-        </tr>
+        </tbody>
     </table>
     <img style="padding-top: 360px; padding-right: 760px; transform: scaleX(-1)" src="https://newmar.imgix.net/wp-content/uploads/2019/06/02120526/2020-mountain-aire-navigation-image.png?auto=compress,format&crop=edges&fit=crop" alt="" >
 
