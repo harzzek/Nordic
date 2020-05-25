@@ -8,22 +8,25 @@ public class Booking
     LocalDate bookingDate;
     String pickup;
     String dropoff;
-    Customer customer;
-    Motorhome motorhome;
+    int idCustomer;
+    int idMotorhome;
 
-    public void Booking(LocalDate bookingDate, String pickup, String dropoff, Customer customer, Motorhome motorhome)
+    public Booking(LocalDate bookingDate, String pickup, String dropoff, int idCustomer, int idMotorhome)
     {
         this.bookingDate = bookingDate;
         this.pickup = pickup;
         this.dropoff = dropoff;
-        this.customer = customer;
-        this.motorhome = motorhome;
+        this.idCustomer = idCustomer;
+        this.idMotorhome = idMotorhome;
     }
 
-    public void Booking(LocalDate bookingDate, Customer customer, Motorhome motorhome)
+    public Booking(int idBooking, LocalDate bookingDate, String pickup, String dropoff, int idCustomer, int idMotorhome)
     {
+        this.idBooking = idBooking;
         this.bookingDate = bookingDate;
-        this.customer = customer;
-        this.motorhome = motorhome;
+        this.pickup = pickup;
+        this.dropoff = dropoff;
+        this.idCustomer = idCustomer;
+        this.idMotorhome = idMotorhome;
     }
 }

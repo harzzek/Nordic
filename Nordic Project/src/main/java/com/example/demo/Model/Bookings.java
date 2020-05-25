@@ -1,9 +1,15 @@
 package com.example.demo.Model;
 
+import com.example.demo.Database.BookingMapper;
+
 public class Bookings
 {
-    public Booking read(phoneNr){
-        return Booking;
+    BookingMapper bookingMapper = new BookingMapper();
+
+    public Booking read(int phoneNr)
+    {
+        Booking newBooking = new Booking();
+        return bookingMapper.findBooking(phoneNr);
 
     public Booking readAll(){
         return Booking;
@@ -13,6 +19,11 @@ public class Bookings
     }
     public boolean delete(int phone){
         return false;
+    }
+
+    public Booking sendSheet()
+    {
+        return new Booking();
     }
 
     @Override
