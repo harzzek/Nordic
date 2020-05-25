@@ -47,11 +47,11 @@ public class HomeController {
     //lol
     @GetMapping("/cc")
     public String cc(Model model) {
-        model.addAttribute("customers", new Customers().create());
+        model.addAttribute("customers");
         return "cc";
     }
     @PostMapping("/cc")
-    public String create(HttpServletRequest request)  {
+    public String cc(HttpServletRequest request)  {
         String fName = request.getParameter("customerFname");
         String lName = request.getParameter("customerLname");
         String phoneNr = request.getParameter("customerPhone");
