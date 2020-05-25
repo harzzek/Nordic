@@ -2,7 +2,7 @@ package com.example.demo.Model;
 
 import com.example.demo.Database.BookingMapper;
 
-import java.time.LocalDate;
+import java.util.List;
 
 public class Bookings
 {
@@ -13,14 +13,17 @@ public class Bookings
         return bookingMapper.findBooking(phoneNr);
     }
 
-    public Booking readAll()
+    public List<Booking> readAll()
     {
-        return null;
+        return bookingMapper.listOfBookings();
     }
+
+
     public boolean update( Booking booking)
     {
         return false;
     }
+
     public boolean delete(int phone)
     {
         return false;

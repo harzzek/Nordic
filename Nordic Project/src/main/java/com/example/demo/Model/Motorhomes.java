@@ -1,6 +1,5 @@
 package com.example.demo.Model;
 
-import com.example.demo.Database.DatabaseManager;
 import com.example.demo.Database.MotorhomeMapper;
 
 import java.util.ArrayList;

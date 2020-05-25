@@ -105,11 +105,13 @@
         }
     </style>
 </head>
+<div th:replace="header">...</div>
 <body>
     <ul>
             <li><a class="active" href="/">Home</a></li>
             <li><a href="booking">Create Booking</a></li>
             <li><a href="cancel">Cancel Booking</a></li>
+            <li><a href="cancel">Create Customer/a></li>
             <li style="float:right"><a href="about">About</a></li>
     </ul>
 
@@ -136,10 +138,10 @@
         </thread>
         <tbody>
         <tr th:each="booking: ${bookings}">
-            <!--/*@thymesVar id="bookingId" type=""*/-->
-            <td th:text="${booking.bookingId}"></td>
-            <td th:text="${booking.firstName}"></td>
-            <td th:text="${booking.lastName}"></td>
+            <!--/*@thymesVar id="idBooking" type=""*/-->
+            <td th:text="${booking.idBooking}"></td>
+            <td th:text="${booking.bookingDate}"></td>
+            <td th:text="${booking.bookingEndDate}"></td>
             <td th:text="${#temporals.format(booking.bookingDate, 'd MMMM yyyy')}"/><!-- https://www.baeldung.com/dates-in-thymeleaf -->
             <td th:text="${booking.Motorhome}"></td>
         </tr>

@@ -6,14 +6,16 @@ import java.util.List;
 
 public class Customers {
 
-    public int read(int phoneNr)
+    CustomerMapper customerMapper = new CustomerMapper();
+
+    public Customer read(int phoneNr)
     {
-        return 0;
+        return customerMapper.find(phoneNr);
     }
 
     public List<Customer> readAll()
     {
-        return null;
+        return customerMapper.list();
     }
 
     public boolean update()
