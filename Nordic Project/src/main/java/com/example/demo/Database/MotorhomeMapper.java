@@ -1,7 +1,6 @@
 package com.example.demo.Database;
 
 import com.example.demo.Model.Motorhome;
-import com.example.demo.Model.Motorhomes;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
