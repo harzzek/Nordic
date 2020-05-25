@@ -4,10 +4,9 @@ public class Bookings
 {
     public Booking read(phoneNr){
         return Booking;
-    }
 
     public Booking readAll(){
-        return Booking[];
+        return Booking;
     }
     public boolean update(Booking booking){
         return false;
