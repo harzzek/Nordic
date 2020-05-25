@@ -1,32 +1,93 @@
 package com.example.demo.Database;
 
+import com.example.demo.Model.Customer;
+import com.example.demo.Model.Customers;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class CustomerMapper extends DatabaseManager
 {
+    PreparedStatement statement;
 
-    @Override
-    public void create() {
+    public void create(Customer customer) {
+        try {
+            String sql = "INSERT INTO customers Values(DEFAULT,?,?,?,?)";
+            statement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
+            statement.setInt(1,customer.getCustomerPhone());
+            statement.setString(2,customer.getCustomerFname());
+            statement.setString(3,customer.getCustomerLname());
+            statement.setString(4,customer.getCustomerEmail());
+            statement.executeQuery();
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
     }
 
-    @Override
+
     public void delete() {
 
     }
 
-    @Override
+
     public void update() {
 
     }
 
-    @Override
+
     public ArrayList<Customer> list() {
-        return null;
+        ArrayList<Customer> customerList = new ArrayList();
+        try {
+            String sqlQuary1 = "SELECT * from customers";
+            statement = getConnection().prepareStatement(sqlQuary1);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next())
+            {
+                int customerPhone = rs.getInt("customerPhone");
+                String fname = rs.getString("customerFname");
+                String lname = rs.getString("customarLname");
+                String email = rs.getString("customerEmail");
+
+                customerList.add(new Customer(customerPhone, fname, lname, email));
+            }
+
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
+        return customerList;
     }
 
-    @Override
-    public Customer find(int id) {
-        return null;
+
+    public Customer find(int phoneNr) {
+        ResultSet rs;
+        Customer theCustomer = null;
+        try {
+            String sql = "SELECT * from customers where customerPhone = ?";
+            PreparedStatement statement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1,phoneNr);
+
+            rs = statement.executeQuery();
+            while (rs.next())
+            {
+                int customerPhone = rs.getInt("customerPhone");
+                String fname = rs.getString("customerFname");
+                String lname = rs.getString("customarLname");
+                String email = rs.getString("customerEmail");
+
+                theCustomer = new Customer(customerPhone,fname,lname,email);
+            }
+
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
+        return theCustomer;
     }
 }

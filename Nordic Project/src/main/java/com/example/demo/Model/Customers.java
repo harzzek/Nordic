@@ -6,22 +6,26 @@ import java.util.List;
 
 public class Customers {
 
-    public int phoneNr()
+    public int read(int phoneNr)
     {
         return 0;
     }
+
     public List<Customer> readAll()
     {
         return null;
     }
+
     public boolean update()
     {
         return true;
     }
+
     public boolean delete()
     {
         return true;
     }
+
     public String toString()
     {
         return "POGGERS";

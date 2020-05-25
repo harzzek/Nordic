@@ -48,8 +48,12 @@ public class Motorhome
         return size;
     }
 
-    public boolean isStatus()
+    public int isStatus()
     {
-        return status;
+        if(status == true)
+        {
+            return 1;
+        } else
+        return 0;
     }
 }

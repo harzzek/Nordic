@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Motorhomes
 {
-    DatabaseManager motorhomeMapper = new MotorhomeMapper();
+    MotorhomeMapper motorhomeMapper = new MotorhomeMapper();
 
     public Motorhome read(int id)
     {
@@ -17,11 +17,6 @@ public class Motorhomes
     public ArrayList<Motorhome> readAll()
     {
         return motorhomeMapper.list();
-    }
-
-    public Motorhome create(Motorhome motorhome)
-    {
-        return ;
     }
 
     public boolean delete(int id)

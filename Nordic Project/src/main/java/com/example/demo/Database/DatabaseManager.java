@@ -7,10 +7,9 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Properties;
 
-public abstract class DatabaseManager
+public class DatabaseManager
 {
 
     private static String url;
@@ -45,15 +44,5 @@ public abstract class DatabaseManager
         }
         return connection;
     }
-
-    public abstract void create();
-
-    public abstract void delete();
-
-    public abstract void update();
-
-    public abstract ArrayList list();
-
-    public abstract Object find(int id);
 
 }

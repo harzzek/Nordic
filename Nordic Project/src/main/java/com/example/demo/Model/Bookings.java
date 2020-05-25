@@ -2,24 +2,27 @@ package com.example.demo.Model;
 
 import com.example.demo.Database.BookingMapper;
 
+import java.time.LocalDate;
+
 public class Bookings
 {
     BookingMapper bookingMapper = new BookingMapper();
 
     public Booking read(int phoneNr)
     {
-        Booking newBooking = new Booking();
         return bookingMapper.findBooking(phoneNr);
     }
 
-        public Booking readAll()
+    public Booking readAll()
     {
-        return Booking;
+        return null;
     }
-        public boolean update( Booking booking){
+    public boolean update( Booking booking)
+    {
         return false;
     }
-        public boolean delete(int phone){
+    public boolean delete(int phone)
+    {
         return false;
     }
 
