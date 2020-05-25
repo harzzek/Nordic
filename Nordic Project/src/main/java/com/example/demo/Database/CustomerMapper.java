@@ -14,14 +14,14 @@ public class CustomerMapper extends DatabaseManager
 
     public void create(Customer customer) {
         try {
-            String sql = "INSERT INTO customers Values(DEFAULT,?,?,?,?)";
+            String sql = "INSERT INTO customers Values(?,?,?,?)";
             statement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             statement.setInt(1,customer.getCustomerPhone());
             statement.setString(2,customer.getCustomerFname());
             statement.setString(3,customer.getCustomerLname());
             statement.setString(4,customer.getCustomerEmail());
-            statement.executeQuery();
+            statement.execute();
         } catch (Exception e)
         {
             System.out.println(e);

@@ -15,6 +15,11 @@ public class Customer {
         this.customerEmail = customerEmail;
     }
 
+    public Customer()
+    {
+
+    }
+
     public String getCustomerFname()
     {
         return customerFname;

@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+
     <title>index</title>
     <style>
         .mnt {
@@ -109,8 +110,7 @@
             <li><a class="active" href="/">Home</a></li>
             <li><a href="booking">Create Booking</a></li>
             <li><a href="cancel">Cancel Booking</a></li>
-            <li><a href="cc">Create Customer</a></li>
-        <li><a href="test">test</a></li>
+            <li><a href="cancel">Create Customer</a></li>
             <li style="float:right"><a href="about">About</a></li>
     </ul>
 
@@ -141,8 +141,7 @@
             <td th:text="${booking.idBooking}"></td>
             <td th:text="${booking.bookingDate}"></td>
             <td th:text="${booking.bookingEndDate}"></td>
-            <td th:text="${#temporals.format(booking.bookingDate, 'd MMMM yyyy')}"/>
-            <td th:text="${#temporals.format(booking.bookingEndDate, 'd MMMM yyyy')}"/><!-- https://www.baeldung.com/dates-in-thymeleaf -->
+            <td th:text="${#temporals.format(booking.bookingDate, 'd MMMM yyyy')}"/><!-- https://www.baeldung.com/dates-in-thymeleaf -->
             <td th:text="${booking.idMotorhome}"></td>
         </tr>
         </tbody>

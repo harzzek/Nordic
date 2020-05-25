@@ -29,9 +29,9 @@ public class DatabaseManager
         Properties prop = new Properties();
         try {
             prop.load(inputStream);
-            user = prop.getProperty("username");
-            password = prop.getProperty("password");
-            url = prop.getProperty("url");
+            user = prop.getProperty("spring.datasource.username");
+            password = prop.getProperty("spring.datasource.password");
+            url = prop.getProperty("spring.datasource.url");
         } catch (IOException e) {
             e.printStackTrace();
         }

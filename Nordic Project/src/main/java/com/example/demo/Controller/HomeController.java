@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Bookings;
+import com.example.demo.Model.Customer; // slet denne
 import com.example.demo.Model.Customers;
 import com.example.demo.Model.Motorhomes;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,7 @@ public class HomeController {
     //test
     @GetMapping("/cc")
     public String cc(Model model) {
-        model.addAttribute("customers", new Customers().create());
+        model.addAttribute("customers", new Customer());
         return "cc";
     }
     @PostMapping("/cc")
