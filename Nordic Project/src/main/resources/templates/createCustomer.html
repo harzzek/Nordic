@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-
-    <title>index</title>
+    <title>Create Customer</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
     <style>
         .mnt {
             background-image : url("https://wallpaperspit.com/wp-content/uploads/2017/11/Mountain-HD-Wallpapers-1080p.jpeg");
@@ -16,6 +15,7 @@
         }
 
         body { margin:0;}
+
         ul {
             list-style-type: none;
             margin: 0%;
@@ -43,20 +43,12 @@
         .active {
             background-color: saddlebrown;
         }
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
+
+        form {
+            width: 300px;
+            margin: 0 auto;
         }
 
-        th, td {
-            padding: 5px;
-            text-align: center;
-        }
-        table#t01 {
-            width: 50%;
-            color: white;
-            background-color: slategray;
-        }
         /* Buttons */
         /* https://www.w3schools.com/css/css3_buttons.asp */
 
@@ -106,47 +98,26 @@
     </style>
 </head>
 <body>
-    <ul>
-            <li><a class="active" href="/">Home</a></li>
-            <li><a href="booking">Create Booking</a></li>
-            <li><a href="cancel">Cancel Booking</a></li>
-            <li style="float:right"><a href="about">About</a></li>
-    </ul>
-
+<ul>
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="booking">Create Booking</a></li>
+    <li><a href="cancel">Cancel Booking</a></li>
+    <li><a href="cancel">Create Customer</a></li>
+    <li style="float:right"><a href="about">About</a></li>
+</ul>
 <div class="mnt">
-    <br>
-    <div style="text-align: center; font-size: 45px; font-family: Calibri; font-weight: bold; color: darkslategrey; padding-top: 40px " >Welcome to Nordic Motor Home </div>
-    <p align="center"><iframe src="http://free.timeanddate.com/clock/i7anb6qq/n69/fn12/fs18/fc444/tct/pct/ftb/tt0/tw1/th1/tb1" frameborder="0" width="370" height="24" allowTransparency="true"></iframe>
 
-    </p>
-
-    <br><br><br>
-
-    <p align="center"><a href="/cancel" class="btn btn-create">Create</a></p>
-
-    <table id="t01" style="border:1px solid black;margin-left:auto;margin-right:auto;" >
-        <thread>
-        <tr>
-            <th>ID</th>
-            <th>firstName</th>
-            <th>lastName</th>
-            <th>Booking Date</th>
-            <th>Motorhome</th>
-        </tr>
-        </thread>
-        <tbody>
-        <tr th:each="booking: ${bookings}">
-            <!--/*@thymesVar id="bookingId" type=""*/-->
-            <td th:text="${booking.bookingId}"></td>
-            <td th:text="${booking.firstName}"></td>
-            <td th:text="${booking.lastName}"></td>
-            <td th:text="${#temporals.format(booking.bookingDate, 'd MMMM yyyy')}"/><!-- https://www.baeldung.com/dates-in-thymeleaf -->
-            <td th:text="${booking.Motorhome}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <img style="padding-top: 360px; padding-right: 760px; transform: scaleX(-1)" src="https://newmar.imgix.net/wp-content/uploads/2019/06/02120526/2020-mountain-aire-navigation-image.png?auto=compress,format&crop=edges&fit=crop" alt="" >
-
+    <form action="#" th:action="@{/createCustomer}" th:object="${createCustomer}" method="post">
+        <br>
+        <p>First Name.: <input type="text" th:field="*{customerFname}"/></p>
+        <p>Last Name.: <input type="text" th:field="*{customerLname}"/></p>
+        <p>Phone.........: <input type="text" th:field="*{customerPhone}"/></p>
+        <p>Email.........: <input type="text" th:field="*{customerEmail}"/></p>
+        <p>Address......: <input type="text" th:field="*{customerAddress}"/></p>
+        <div align="center">
+            <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
+        </div>
+    </form>
 </div>
 </body>
 </html>

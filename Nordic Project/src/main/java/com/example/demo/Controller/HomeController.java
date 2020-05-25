@@ -27,4 +27,12 @@ public class HomeController {
         return "about";
     }
 
+    @GetMapping("/create")
+    public String create()
+    {
+        return "create";
+    }
+
+    @GetMapping("/createCustomer")
+    public String createCustomer() { return "createCustomer"; }
 }
