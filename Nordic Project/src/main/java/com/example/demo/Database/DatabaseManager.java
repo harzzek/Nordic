@@ -22,7 +22,7 @@ public class DatabaseManager
         if(connection != null) return connection;
         InputStream inputStream = null;
         try {
-            inputStream = new FileInputStream("src/main/resources/application.properties");
+            inputStream = new FileInputStream("C:\\Users\\jonas\\Desktop\\Nordic\\Nordic Project\\src\\main\\resources\\application.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
