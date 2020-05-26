@@ -40,6 +40,13 @@ public class HomeController {
         return "about";
     }
 
+    @GetMapping("/showcustomer")
+    public String showcustomer(Model model)
+    {
+        model.addAttribute("customers", customers.readAll());
+        return "showcustomer";
+    }
+
     @GetMapping("/create")
     public String create()
     {

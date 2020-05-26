@@ -16,33 +16,31 @@
         </button>
         <div class="dropdown-content">
             <a href="cc">Create Customer</a>
-            <a href="#">Show Customers</a>
+            <a href="showcustomer">Show Customers</a>
             <a href="#">Link 3</a>
         </div>
     </div>
     <li style="float:right"><a href="about">About</a></li>
 </ul>
 <div class="mnt">
-
-    <table>
+    <br><br><br>
+    <table id="t01" style="border:1px solid black;margin-left:auto;margin-right:auto;">
         <thead>
         <tr>
-            <th>Id</th>
+            <th>Phone</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Enrollment Date</th>
-            <th>Cpr</th>
-            <th>Options</th>
+            <th>Email</th>
+
         </tr>
         </thead>
         <tbody>
-        <tr th:each="customer: ${customerList}">
+        <tr th:each="customer: ${customers}">
             <!--/*@thymesVar id="studentId" type=""*/-->
-            <td th:text="${customers.customerPhone}"></td>
-            <td th:text="${student.firstName}"></td>
-            <td th:text="${student.lastName}"></td>
-            <td th:text="${#temporals.format(student.enrollmentDate, 'd MMMM yyyy')}"/><!-- https://www.baeldung.com/dates-in-thymeleaf -->
-            <td th:text="${student.cpr}"></td>
+            <td th:text="${customer.customerPhone}"></td>
+            <td th:text="${customer.customerFname}"></td>
+            <td th:text="${customer.customerLname}"></td>
+            <td th:text="${customer.customerEmail}"></td>
         </tr>
         </tbody>
     </table>
