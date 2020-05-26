@@ -3,6 +3,7 @@ package com.example.demo.Database;
 import com.example.demo.Model.Booking;
 import com.example.demo.Model.Customer;
 import com.example.demo.Model.Motorhome;
+//import jdk.vm.ci.meta.Local;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -16,8 +17,26 @@ public class BookingMapper extends DatabaseManager
     PreparedStatement statement;
 
 
-    public void createBooking(Motorhome motorhome, Customer customer)
+    public void createBooking(Booking booking)
     {
+        try {
+            String sql = "INSERT INTO bookings Values(?,?,?,?,?,?)";
+            statement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            LocalDate startDate = booking.getBookingDate();
+            startDate.plusDays(1);
+            statement.setDate(1,Date.valueOf(startDate));
+            LocalDate endDate = booking.getBookingEndDate();
+            endDate.plusDays(1);
+            statement.setDate(2,Date.valueOf(endDate));
+            statement.setString(3,booking.getPickup());
+            statement.setString(4,booking.getDropoff());
+            statement.setInt(5,booking.getcustomerPhone());
+            statement.setInt(6,booking.getIdMotorhome());
+            statement.execute();
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
 
 
     }

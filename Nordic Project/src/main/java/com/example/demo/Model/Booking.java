@@ -13,27 +13,31 @@ public class Booking
     private LocalDate bookingEndDate;
     private String pickup;
     private String dropoff;
-    private int idCustomer;
+    private int customerPhone;
     private int idMotorhome;
 
-    public Booking(LocalDate bookingDate, String pickup, String dropoff, int idCustomer, int idMotorhome)
+    public Booking(LocalDate bookingDate, LocalDate bookingEndDate, String pickup, String dropoff, int customerPhone, int idMotorhome)
     {
         this.bookingDate = bookingDate;
+        this.bookingEndDate = bookingEndDate;
         this.pickup = pickup;
         this.dropoff = dropoff;
-        this.idCustomer = idCustomer;
+        this.customerPhone = customerPhone;
         this.idMotorhome = idMotorhome;
     }
 
-    public Booking(int idBooking, LocalDate bookingDate, LocalDate bookingEndDate, String pickup, String dropoff, int idCustomer, int idMotorhome)
+    public Booking(int idBooking, LocalDate bookingDate, LocalDate bookingEndDate, String pickup, String dropoff, int customerPhone, int idMotorhome)
     {
         this.idBooking = idBooking;
         this.bookingDate = bookingDate;
         this.bookingEndDate = bookingEndDate;
         this.pickup = pickup;
         this.dropoff = dropoff;
-        this.idCustomer = idCustomer;
+        this.customerPhone = customerPhone;
         this.idMotorhome = idMotorhome;
+    }
+    public Booking(){
+
     }
     public int getIdBooking() {
         return idBooking;
@@ -55,8 +59,8 @@ public class Booking
         return dropoff;
     }
 
-    public int getIdCustomer() {
-        return idCustomer;
+    public int getcustomerPhone() {
+        return customerPhone;
     }
 
     public int getIdMotorhome() {

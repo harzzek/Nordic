@@ -7,8 +7,16 @@
 <body>
 <ul>
     <li><a class="active" href="/">Home</a></li>
-    <li><a href="booking">Create Booking</a></li>
-    <li><a href="cancel">Cancel Booking</a></li>
+    <div class="dropdown">
+        <button class="dropbtn">Booking Options
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="create">Create Booking</a>
+            <a href="cancel">Delete Booking</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
     <li><a href="/motorhome">Motorhomes</a></li>
     <div class="dropdown">
         <button class="dropbtn">Customer Options
@@ -29,6 +37,8 @@
         <p>Phone Nr : <input type="text" th:field="*{customerPhone}"/></p>
         <p>Booking start : <input type="date" th:field="*{bookingDate}"/></p>
         <p>Booking end : <input type="date" th:field="*{bookingEndDate}"/></p>
+        <p>Pickup location (Optional): <input type="text" th:field="*{pickup}"/></p>
+        <p>Dropoff location (Optional) : <input type="text" th:field="*{dropoff}"/></p>
         <p>Motorhome : <input type="text" th:field="*{idMotorhome}"/></p>
         <div align="center">
          <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>

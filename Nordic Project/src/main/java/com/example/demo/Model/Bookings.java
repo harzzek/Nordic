@@ -2,6 +2,7 @@ package com.example.demo.Model;
 
 import com.example.demo.Database.BookingMapper;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Bookings
@@ -36,4 +37,8 @@ public class Bookings
         return null;
     }
 
+    public void create(LocalDate bookingDate, LocalDate bookingEndDate, String pickup, String dropoff, int customerPhone, int idMotorhome) {
+       Booking booking = new Booking(bookingDate, bookingEndDate, pickup, dropoff, customerPhone, idMotorhome);
+       bookingMapper.createBooking(booking);
+    }
 }
