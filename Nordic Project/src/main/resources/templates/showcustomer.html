@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Customer</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+<ul>
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="booking">Create Booking</a></li>
+    <li><a href="cancel">Cancel Booking</a></li>
+    <div class="dropdown">
+        <button class="dropbtn">Customer Options
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="cc">Create Customer</a>
+            <a href="showcustomer">Show Customers</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+    <li style="float:right"><a href="about">About</a></li>
+</ul>
+<div class="mnt">
+    <br><br><br>
+    <table id="t01" style="border:1px solid black;margin-left:auto;margin-right:auto;">
+        <thead>
+        <tr>
+            <th>Phone</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer: ${customers}">
+            <!--/*@thymesVar id="studentId" type=""*/-->
+            <td th:text="${customer.customerPhone}"></td>
+            <td th:text="${customer.customerFname}"></td>
+            <td th:text="${customer.customerLname}"></td>
+            <td th:text="${customer.customerEmail}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

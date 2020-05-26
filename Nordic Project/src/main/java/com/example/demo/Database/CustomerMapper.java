@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerMapper extends DatabaseManager
 {
@@ -39,18 +40,18 @@ public class CustomerMapper extends DatabaseManager
     }
 
 
-    public ArrayList<Customer> list() {
+    public List<Customer> list() {
         ArrayList<Customer> customerList = new ArrayList();
         try {
             String sqlQuary1 = "SELECT * from customers";
             statement = getConnection().prepareStatement(sqlQuary1);
-            ResultSet rs = statement.executeQuery();
+            ResultSet rs = statement.executeQuery(sqlQuary1);
 
             while (rs.next())
             {
                 int customerPhone = rs.getInt("customerPhone");
                 String fname = rs.getString("customerFname");
-                String lname = rs.getString("customarLname");
+                String lname = rs.getString("customerLname");
                 String email = rs.getString("customerEmail");
 
                 customerList.add(new Customer(customerPhone, fname, lname, email));
