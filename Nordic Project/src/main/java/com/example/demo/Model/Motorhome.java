@@ -7,9 +7,17 @@ public class Motorhome
     String brand;
     String model;
     int size;
-    boolean status;
+    String status;
 
-    public Motorhome(int idMotorhome, String type, String brand, String model, int size, boolean status){
+    public Motorhome(String type, String brand, String model, int size, String status){
+        this.type = type;
+        this.brand = brand;
+        this.model = model;
+        this.size = size;
+        this.status = status;
+    }
+
+    public Motorhome(int idMotorhome, String type, String brand, String model, int size, String status){
         this.idMotorhome = idMotorhome;
         this.type = type;
         this.brand = brand;
@@ -18,15 +26,15 @@ public class Motorhome
         this.status = status;
     }
 
+    public Motorhome(){
+
+    }
+
     public int getIdMotorhome()
     {
         return idMotorhome;
     }
 
-    public void setIdMotorhome(int idMotorhome)
-    {
-        this.idMotorhome = idMotorhome;
-    }
 
     public String getType()
     {
@@ -48,12 +56,8 @@ public class Motorhome
         return size;
     }
 
-    public int isStatus()
+    public String getStatus()
     {
-        if(status == true)
-        {
-            return 1;
-        } else
-        return 0;
+        return status;
     }
 }

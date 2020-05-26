@@ -21,7 +21,7 @@ public class MotorhomeMapper extends DatabaseManager
             statement.setString(2,motorhome.getBrand());
             statement.setString(3,motorhome.getModel());
             statement.setInt(4,motorhome.getSize());
-            statement.setInt(5,motorhome.isStatus());
+            statement.setString(5,motorhome.getStatus());
             statement.executeQuery();
         } catch (Exception e)
         {
@@ -52,14 +52,10 @@ public class MotorhomeMapper extends DatabaseManager
                 String brand = rs.getString("brand");
                 String model = rs.getString("model");
                 int size = rs.getInt("size");
-                int status = rs.getInt("status");
-                boolean workStatus = false;
-                if (status == 1)
-                {
-                    workStatus = true;
-                }
+                String status = rs.getString("status");
 
-                motorhomeList.add(new Motorhome(idMotorhome,  type, brand, model, size, workStatus));
+
+                motorhomeList.add(new Motorhome(idMotorhome,  type, brand, model, size, status));
             }
 
         } catch (Exception e)
@@ -85,14 +81,9 @@ public class MotorhomeMapper extends DatabaseManager
                 String brand = rs.getString("brand");
                 String model = rs.getString("model");
                 int size = rs.getInt("size");
-                int status = rs.getInt("status");
-                boolean workStatus = false;
-                if (status == 1)
-                {
-                    workStatus = true;
-                }
+                String status = rs.getString("status");
 
-                theMotorhome = new Motorhome(idMotorhome,type,brand,model,size,workStatus);
+                theMotorhome = new Motorhome(idMotorhome,type,brand,model,size,status);
             }
 
         } catch (Exception e)

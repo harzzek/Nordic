@@ -27,4 +27,9 @@ public class Motorhomes
     {
         return null;
     }
+
+    public void create(String type, String brand, String model, int size, String status){
+        Motorhome motorhome = new Motorhome(type, brand, model, size, status);
+        motorhomeMapper.create(motorhome);
+    }
 }

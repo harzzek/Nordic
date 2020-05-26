@@ -1,9 +1,6 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Model.Bookings;
-import com.example.demo.Model.Customer; // slet denne
-import com.example.demo.Model.Customers;
-import com.example.demo.Model.Motorhomes;
+import com.example.demo.Model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,37 +16,34 @@ public class HomeController {
     Motorhomes motorhomes = new Motorhomes();
 
     @GetMapping("/")
-    public String index(Model model)
-    {
+    public String index(Model model) {
         model.addAttribute("bookings", bookings.readAll());
         return "index";
     }
 
     @GetMapping("/booking")
-    public String booking()
-    {
+    public String booking() {
         return "booking";
     }
 
     @GetMapping("/cancel")
-    public String cancel() { return "cancel"; }
+    public String cancel() {
+        return "cancel";
+    }
 
     @GetMapping("/about")
-    public String about()
-    {
+    public String about() {
         return "about";
     }
 
     @GetMapping("/showcustomer")
-    public String showcustomer(Model model)
-    {
+    public String showcustomer(Model model) {
         model.addAttribute("customers", customers.readAll());
         return "showcustomer";
     }
 
     @GetMapping("/create")
-    public String create()
-    {
+    public String create() {
         return "create";
     }
 
@@ -58,15 +52,33 @@ public class HomeController {
         model.addAttribute("customers", new Customer());
         return "cc";
     }
+
     @PostMapping("/cc")
-    public String create(HttpServletRequest request)  {
+    public String create(HttpServletRequest request) {
         String fName = request.getParameter("customerFname");
         String lName = request.getParameter("customerLname");
         String phoneNr = request.getParameter("customerPhone");
         int realPhoneNr = Integer.parseInt(phoneNr);
         String email = request.getParameter("customerEmail");
         customers.create(realPhoneNr, fName, lName, email);
-        return "redirect:/";
+        return "redirect:/showcustomer";
     }
 
+    @GetMapping("/motorhome")
+    public String createMotorhome(Model model) {
+        model.addAttribute("motorhome", new Motorhome());
+        return "motorhome";
+    }
+
+    @PostMapping("/motorhome")
+    public String createMotorhome(HttpServletRequest request) {
+        String type = request.getParameter("Type");
+        String brand = request.getParameter("Brand");
+        String model = request.getParameter("Model");
+        String size = request.getParameter("Size");
+        int realSize = Integer.parseInt(size);
+        String status = request.getParameter("Status");
+        motorhomes.create(type, brand, model, realSize, status);
+        return "redirect:/";
+    }
 }
