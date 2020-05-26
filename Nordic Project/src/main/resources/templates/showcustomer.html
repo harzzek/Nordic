@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Customer</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+<ul>
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="booking">Create Booking</a></li>
+    <li><a href="cancel">Cancel Booking</a></li>
+    <div class="dropdown">
+        <button class="dropbtn">Customer Options
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="cc">Create Customer</a>
+            <a href="#">Show Customers</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+    <li style="float:right"><a href="about">About</a></li>
+</ul>
+<div class="mnt">
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Enrollment Date</th>
+            <th>Cpr</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer: ${customerList}">
+            <!--/*@thymesVar id="studentId" type=""*/-->
+            <td th:text="${customers.customerPhone}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${#temporals.format(student.enrollmentDate, 'd MMMM yyyy')}"/><!-- https://www.baeldung.com/dates-in-thymeleaf -->
+            <td th:text="${student.cpr}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
