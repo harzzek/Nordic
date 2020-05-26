@@ -3,43 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>cancel</title>
-    <style>
-        body { margin:0;}
-        ul {
-            list-style-type: none;
-            margin: 0%;
-            padding: 0%;
-            overflow: hidden;
-            background-color: burlywood;
-        }
-
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        /* Change the link color to #111 (black) on hover */
-        li a:hover {
-            background-color: cadetblue;
-        }
-        .active {
-            background-color: saddlebrown;
-        }
-    </style>
+    <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
 <ul>
     <li><a class="active" href="/">Home</a></li>
     <li><a href="booking">Create Booking</a></li>
     <li><a href="cancel">Cancel Booking</a></li>
-    <li><a href="cc">Create Customer</a></li>
+    <div class="dropdown">
+        <button class="dropbtn">Customer Options
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="cc">Create Customer</a>
+            <a href="#">Show Customers</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
     <li style="float:right"><a href="about">About</a></li>
 </ul>
 </body>
