@@ -9,6 +9,7 @@
     <li><a class="active" href="/">Home</a></li>
     <li><a href="booking">Create Booking</a></li>
     <li><a href="cancel">Cancel Booking</a></li>
+    <li><a href="/motorhome">Motorhomes</a></li>
     <div class="dropdown">
         <button class="dropbtn">Customer Options
             <i class="fa fa-caret-down"></i>
@@ -25,10 +26,14 @@
 
     <form action="#" th:action="@{/cc}" th:object="${customers}" method="post">
         <br>
-        <p>First Name.: <input type="text" th:field="*{customerFname}"/></p>
-        <p>Last Name.: <input type="text" th:field="*{customerLname}"/></p>
-        <p>Phone.........: <input type="text" th:field="*{customerPhone}"/></p>
-        <p>Email.........: <input type="text" th:field="*{customerEmail}"/></p>
+        <label>First Name:</label>
+        <p><input type="text" th:field="*{customerFname}"/></p>
+        <label>Last Name:</label>
+        <p><input type="text" th:field="*{customerLname}"/></p>
+        <label>Phone:</label>
+        <p><input type="text" th:field="*{customerPhone}"/></p>
+        <label>Email:</label>
+        <p><input type="text" th:field="*{customerEmail}"/></p>
         <div align="center">
             <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
         </div>
