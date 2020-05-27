@@ -1,7 +1,6 @@
 package com.example.demo.Database;
 
 import com.example.demo.Model.Customer;
-import com.example.demo.Model.Customers;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -79,7 +78,7 @@ public class CustomerMapper extends DatabaseManager
             {
                 int customerPhone = rs.getInt("customerPhone");
                 String fname = rs.getString("customerFname");
-                String lname = rs.getString("customarLname");
+                String lname = rs.getString("customerLname");
                 String email = rs.getString("customerEmail");
 
                 theCustomer = new Customer(customerPhone,fname,lname,email);

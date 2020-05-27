@@ -2,10 +2,10 @@ package com.example.demo.Model;
 
 public class Customer {
 
-    int customerPhone;
-    String customerFname;
-    String customerLname;
-    String customerEmail;
+    private int customerPhone;
+    private String customerFname;
+    private String customerLname;
+    private String customerEmail;
 
     public Customer(int customerPhone, String customerFname, String customerLname, String customerEmail)
     {
@@ -34,6 +34,11 @@ public class Customer {
     {
         return customerPhone;
     }
+
+    public void setCustomerPhone(int customerPhone) {
+        this.customerPhone = customerPhone;
+    }
+
 
     public String getCustomerEmail()
     {

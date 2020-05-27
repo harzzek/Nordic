@@ -6,11 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.time.LocalDate;
 
 @Controller
 public class HomeController {
@@ -92,12 +89,27 @@ public class HomeController {
     public String verify(Model model)
     {
         model.addAttribute("customer", new Customer());
-        return "create";
+        return "verify";
+    }
+
+    @PostMapping("/verify")
+    public String verify(HttpServletRequest request, Model model)
+    {
+        String phoneNr = request.getParameter("customerPhone");
+        int phoneNrInt = Integer.parseInt(phoneNr);
+        if(customers.read(phoneNrInt) != null)
+        {
+            Customer customer = customers.read(phoneNrInt);
+            model.addAttribute("customer", customer);
+            return "redirect:/create";
+        } else
+        return "redirect:/";
     }
 
     @GetMapping("/create")
     public String create(@ModelAttribute("customer") Customer customer, Model model) {
         Booking booking = new Booking();
+        System.out.println(customer.getCustomerPhone());
         booking.setCustomerPhone(customer.getCustomerPhone());
         model.addAttribute("booking", booking);
         return "create";

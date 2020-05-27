@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Create booking</title>
     <link rel="stylesheet" href="mystyle.css">
 </head>
@@ -45,17 +46,16 @@
 
     <form action="#" th:action="@{/create}" th:object="${booking}" method="post">
         <br>
-        <p><input type="hidden" th:field="*{customerPhone}"/></p>
         <label>Booking start:</label>
-        <p><input type="date" th:field="*{bookingDate}"/></p>
+        <p><input type="date" th:field="${booking.bookingDate}"/></p>
         <label>Booking end:</label>
-        <p><input type="date" th:field="*{bookingEndDate}"/></p>
+        <p><input type="date" th:field="${booking.bookingEndDate}"/></p>
         <label>Dropoff location (Optional):</label>
-        <p><input type="text" th:field="*{dropoff}"/></p>
+        <p><input type="text" th:field="${booking.dropoff}"/></p>
         <label>Pickup location (Optional):</label>
-        <p><input type="text" th:field="*{pickup}"/></p>
+        <p><input type="text" th:field="${booking.pickup}"/></p>
         <label>Motorhome: </label>
-        <p><input type="text" th:field="*{idMotorhome}"/></p>
+        <p><input type="text" th:field="${booking.idMotorhome}"/></p>
         <div align="center">
          <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
         </div>
