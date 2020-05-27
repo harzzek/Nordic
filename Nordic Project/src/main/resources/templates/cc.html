@@ -46,13 +46,13 @@
     <form action="#" th:action="@{/cc}" th:object="${customers}" method="post">
         <br>
         <label>First Name:</label>
-        <p><input type="text" th:field="*{customerFname}"/></p>
+        <p><input required="required" type="text" th:field="*{customerFname}"/></p>
         <label>Last Name:</label>
-        <p><input type="text" th:field="*{customerLname}"/></p>
+        <p><input required="required" type="text" th:field="*{customerLname}"/></p>
         <label>Phone:</label>
-        <p><input type="text" th:field="*{customerPhone}"/></p>
+        <p><input required="required" type="text" th:field="*{customerPhone}"/></p>
         <label>Email:</label>
-        <p><input type="text" th:field="*{customerEmail}"/></p>
+        <p><input type="email" th:field="*{customerEmail}"/></p>
         <div align="center">
             <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
         </div>

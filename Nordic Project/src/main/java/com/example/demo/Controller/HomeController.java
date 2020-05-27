@@ -107,7 +107,7 @@ public class HomeController {
         int realSize = Integer.parseInt(size);
         String status = request.getParameter("status");
         motorhomes.create(type, brand, model, realSize, status);
-        return "redirect:/";
+        return "redirect:/showmotorhome";
     }
     @GetMapping("/showmotorhome")
     public String showmotorhome(Model model)
