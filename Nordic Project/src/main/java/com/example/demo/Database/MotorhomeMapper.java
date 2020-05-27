@@ -22,7 +22,7 @@ public class MotorhomeMapper extends DatabaseManager
             statement.setString(3,motorhome.getModel());
             statement.setInt(4,motorhome.getSize());
             statement.setString(5,motorhome.getStatus());
-            statement.executeQuery();
+            statement.execute();
         } catch (Exception e)
         {
             System.out.println(e);

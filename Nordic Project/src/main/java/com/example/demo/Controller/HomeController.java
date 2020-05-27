@@ -68,7 +68,7 @@ public class HomeController {
         String dropoff = request.getParameter("dropoff");
         String phoneNr = request.getParameter("customerPhone");
         int realPhoneNr = Integer.parseInt(phoneNr);
-        String idMotor = request.getParameter("IdMotorhome");
+        String idMotor = request.getParameter("idMotorhome");
         int realIdMotor = Integer.parseInt(idMotor);
         bookings.create(startDate, endDate, pickup, dropoff, realPhoneNr, realIdMotor);
         return "redirect:/";
@@ -100,12 +100,12 @@ public class HomeController {
 
     @PostMapping("/motorhome")
     public String createMotorhome(HttpServletRequest request) {
-        String type = request.getParameter("Type");
-        String brand = request.getParameter("Brand");
-        String model = request.getParameter("Model");
-        String size = request.getParameter("Size");
+        String type = request.getParameter("type");
+        String brand = request.getParameter("brand");
+        String model = request.getParameter("model");
+        String size = request.getParameter("size");
         int realSize = Integer.parseInt(size);
-        String status = request.getParameter("Status");
+        String status = request.getParameter("status");
         motorhomes.create(type, brand, model, realSize, status);
         return "redirect:/";
     }
