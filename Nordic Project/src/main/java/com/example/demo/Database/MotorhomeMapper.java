@@ -2,20 +2,22 @@ package com.example.demo.Database;
 
 import com.example.demo.Model.Motorhome;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class MotorhomeMapper extends DatabaseManager
+public class MotorhomeMapper
 {
     PreparedStatement statement;
+    Connection connection = DatabaseManager.getConnection();
 
     public void create(Motorhome motorhome)
     {
         try {
             String sql = "INSERT INTO motorhomes Values(DEFAULT,?,?,?,?,?)";
-            statement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             statement.setString(1,motorhome.getType());
             statement.setString(2,motorhome.getBrand());
@@ -42,7 +44,7 @@ public class MotorhomeMapper extends DatabaseManager
         ArrayList<Motorhome> motorhomeList = new ArrayList();
         try {
             String sqlQuary1 = "SELECT * from motorhomes";
-            statement = getConnection().prepareStatement(sqlQuary1);
+            statement = connection.prepareStatement(sqlQuary1);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next())
@@ -71,7 +73,7 @@ public class MotorhomeMapper extends DatabaseManager
         Motorhome theMotorhome = null;
         try {
             String sql = "SELECT * from motorhomes where idMotorhome = ?";
-            PreparedStatement statement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1,id);
 
             rs = statement.executeQuery();

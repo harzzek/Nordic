@@ -63,6 +63,9 @@ public class Booking
         return customerPhone;
     }
 
+    public void setCustomerPhone(int customerPhone) {
+        this.customerPhone = customerPhone;
+    }
     public int getIdMotorhome() {
         return idMotorhome;
     }

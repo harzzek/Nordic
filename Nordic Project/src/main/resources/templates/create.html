@@ -45,8 +45,7 @@
 
     <form action="#" th:action="@{/create}" th:object="${booking}" method="post">
         <br>
-        <label>Phone Nr:</label>
-        <p><input type="text" th:field="*{customerPhone}"/></p>
+        <p><input type="hidden" th:field="*{customerPhone}"/></p>
         <label>Booking start:</label>
         <p><input type="date" th:field="*{bookingDate}"/></p>
         <label>Booking end:</label>

@@ -5,23 +5,21 @@ import com.example.demo.Model.Customer;
 import com.example.demo.Model.Motorhome;
 //import jdk.vm.ci.meta.Local;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class BookingMapper extends DatabaseManager
+public class BookingMapper
 {
     PreparedStatement statement;
+    Connection connection = DatabaseManager.getConnection();
 
 
     public void createBooking(Booking booking)
     {
         try {
             String sql = "INSERT INTO bookings Values(?,?,?,?,?,?)";
-            statement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             LocalDate startDate = booking.getBookingDate();
             startDate.plusDays(1);
             statement.setDate(1,Date.valueOf(startDate));
@@ -56,7 +54,7 @@ public class BookingMapper extends DatabaseManager
         ArrayList<Booking> bookingList = new ArrayList();
         try {
             String sqlQuary1 = "SELECT * from bookings";
-            statement = getConnection().prepareStatement(sqlQuary1);
+            statement = connection.prepareStatement(sqlQuary1);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next())
@@ -89,7 +87,7 @@ public class BookingMapper extends DatabaseManager
         Booking theBooking = null;
         try {
             String sql = "SELECT * from bookings where customerPhone = ?";
-            statement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1,phoneNr);
 
             rs = statement.executeQuery();

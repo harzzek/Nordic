@@ -4,9 +4,12 @@ import com.example.demo.Model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 
 @Controller
@@ -42,37 +45,6 @@ public class HomeController {
     public String showcustomer(Model model) {
         model.addAttribute("customers", customers.readAll());
         return "showcustomer";
-    }
-
-    @GetMapping("/create")
-    public String create(Model model) {
-        model.addAttribute("booking", new Booking());
-        return "create";
-    }
-
-    @PostMapping("/create")
-    public String createBooking(HttpServletRequest request)
-    {
-        String bookingDate = request.getParameter("bookingDate");
-        String split[] = bookingDate.split("-");
-        int year = Integer.parseInt(split[0]);
-        int month = Integer.parseInt(split[1]);
-        int day = Integer.parseInt(split[2]);
-        LocalDate startDate = LocalDate.of(year, month, day);
-        String bookingEndDate = request.getParameter("bookingEndDate");
-        String split2[] = bookingEndDate.split("-");
-        int year2 = Integer.parseInt(split2[0]);
-        int month2 = Integer.parseInt(split2[1]);
-        int day2 = Integer.parseInt(split2[2]);
-        LocalDate endDate = LocalDate.of(year2, month2, day2);
-        String pickup = request.getParameter("pickup");
-        String dropoff = request.getParameter("dropoff");
-        String phoneNr = request.getParameter("customerPhone");
-        int realPhoneNr = Integer.parseInt(phoneNr);
-        String idMotor = request.getParameter("idMotorhome");
-        int realIdMotor = Integer.parseInt(idMotor);
-        bookings.create(startDate, endDate, pickup, dropoff, realPhoneNr, realIdMotor);
-        return "redirect:/";
     }
 
     @GetMapping("/cc")
@@ -116,11 +88,43 @@ public class HomeController {
         return "showmotorhome";
     }
 
-
-
     @GetMapping("/verify")
-    public String verify()
+    public String verify(Model model)
     {
-        return "verify";
+        model.addAttribute("customer", new Customer());
+        return "create";
+    }
+
+    @GetMapping("/create")
+    public String create(@ModelAttribute("customer") Customer customer, Model model) {
+        Booking booking = new Booking();
+        booking.setCustomerPhone(customer.getCustomerPhone());
+        model.addAttribute("booking", booking);
+        return "create";
+    }
+
+    @PostMapping("/create")
+    public String createBooking(@ModelAttribute("booking") Booking booking)
+    {
+//        String bookingDate = request.getParameter("bookingDate");
+//        String split[] = bookingDate.split("-");
+//        int year = Integer.parseInt(split[0]);
+//        int month = Integer.parseInt(split[1]);
+//        int day = Integer.parseInt(split[2]);
+//        LocalDate startDate = LocalDate.of(year, month, day);
+//        String bookingEndDate = request.getParameter("bookingEndDate");
+//        String split2[] = bookingEndDate.split("-");
+//        int year2 = Integer.parseInt(split2[0]);
+//        int month2 = Integer.parseInt(split2[1]);
+//        int day2 = Integer.parseInt(split2[2]);
+//        LocalDate endDate = LocalDate.of(year2, month2, day2);
+//        String pickup = request.getParameter("pickup");
+//        String dropoff = request.getParameter("dropoff");
+//        String phoneNr = request.getParameter("customerPhone");
+//        int realPhoneNr = Integer.parseInt(phoneNr);
+//        String idMotor = request.getParameter("idMotorhome");
+//        int realIdMotor = Integer.parseInt(idMotor);
+        bookings.create(booking);
+        return "redirect:/";
     }
 }
