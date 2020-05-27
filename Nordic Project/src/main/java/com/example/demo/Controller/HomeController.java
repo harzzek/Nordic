@@ -21,6 +21,7 @@ public class HomeController {
         model.addAttribute("bookings", bookings.readAll());
         return "index";
     }
+    //testLOL
 
     @GetMapping("/booking")
     public String booking() {
