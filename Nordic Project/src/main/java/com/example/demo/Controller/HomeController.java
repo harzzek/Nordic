@@ -109,4 +109,10 @@ public class HomeController {
         motorhomes.create(type, brand, model, realSize, status);
         return "redirect:/";
     }
+
+    @GetMapping("/verify")
+    public String verify()
+    {
+        return "verify";
+    }
 }
