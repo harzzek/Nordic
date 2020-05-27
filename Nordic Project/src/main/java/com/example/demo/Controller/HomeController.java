@@ -73,7 +73,6 @@ public class HomeController {
         int realIdMotor = Integer.parseInt(idMotor);
         bookings.create(startDate, endDate, pickup, dropoff, realPhoneNr, realIdMotor);
         return "redirect:/";
-
     }
 
     @GetMapping("/cc")
@@ -110,6 +109,14 @@ public class HomeController {
         motorhomes.create(type, brand, model, realSize, status);
         return "redirect:/";
     }
+    @GetMapping("/showmotorhome")
+    public String showmotorhome(Model model)
+    {
+        model.addAttribute("motorhomes", motorhomes.readAll());
+        return "showmotorhome";
+    }
+
+
 
     @GetMapping("/verify")
     public String verify()

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Motorhomes</title>
+    <meta charset="UTF-8">
+    <title>Show Motorhome</title>
     <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
@@ -42,24 +43,32 @@
     <li style="float:right"><a href="about">About</a></li>
 </ul>
 <div class="mnt">
+    <br><br><br>
+    <table id="t01" style="border:1px solid black;margin-left:auto;margin-right:auto;">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Size</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="motorhome: ${motorhomes}">
+            <!--/*@thymesVar id="studentId" type=""*/-->
+            <td th:text="${motorhome.idMotorhome}"></td>
+            <td th:text="${motorhome.type}"></td>
+            <td th:text="${motorhome.brand}"></td>
+            <td th:text="${motorhome.model}"></td>
+            <td th:text="${motorhome.size}"></td>
+            <td th:text="${motorhome.status}"></td>
+        </tr>
+        </tbody>
+    </table>
 
-    <form action="#" th:action="@{/motorhome}" th:object="${motorhome}" method="post">
-        <br>
-        <label>Type:</label>
-        <p><input type="text" th:field="*{type}"/></p>
-        <label>Brand:</label>
-        <p><input type="text" th:field="*{brand}"/></p>
-        <label>Model:</label>
-        <p><input type="text" th:field="*{model}"/></p>
-        <label>Size:</label>
-        <p><input type="text" th:field="*{size}"/></p>
-        <label>Status:</label>
-        <p><input type="text" th:field="*{status}"/></p>
-        <br>
-        <div align="center">
-            <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
-        </div>
-    </form>
 </div>
+
 </body>
 </html>

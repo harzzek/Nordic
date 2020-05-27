@@ -17,7 +17,18 @@
             <a href="#">Link 3</a>
         </div>
     </div>
-    <li><a href="motorhome">Motorhomes</a></li>
+
+    <div class="dropdown">
+        <button class="dropbtn">Motorhome Options
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="motorhome">Create Motorhome</a>
+            <a href="showmotorhome"> Show Motorhome</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+
     <div class="dropdown">
         <button class="dropbtn">Customer Options
             <i class="fa fa-caret-down"></i>
@@ -34,12 +45,18 @@
 
     <form action="#" th:action="@{/create}" th:object="${booking}" method="post">
         <br>
-        <p>Phone Nr : <input type="text" th:field="*{customerPhone}"/></p>
-        <p>Booking start : <input type="date" th:field="*{bookingDate}"/></p>
-        <p>Booking end : <input type="date" th:field="*{bookingEndDate}"/></p>
-        <p>Dropoff location (Optional) : <input type="text" th:field="*{dropoff}"/></p>
-        <p>Pickup location (Optional): <input type="text" th:field="*{pickup}"/></p>
-        <p>Motorhome : <input type="text" th:field="*{idMotorhome}"/></p>
+        <label>Phone Nr:</label>
+        <p><input type="text" th:field="*{customerPhone}"/></p>
+        <label>Booking start:</label>
+        <p><input type="date" th:field="*{bookingDate}"/></p>
+        <label>Booking end:</label>
+        <p><input type="date" th:field="*{bookingEndDate}"/></p>
+        <label>Dropoff location (Optional):</label>
+        <p><input type="text" th:field="*{dropoff}"/></p>
+        <label>Pickup location (Optional):</label>
+        <p><input type="text" th:field="*{pickup}"/></p>
+        <label>Motorhome : </label>
+        <p><input type="text" th:field="*{idMotorhome}"/></p>
         <div align="center">
          <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
         </div>
