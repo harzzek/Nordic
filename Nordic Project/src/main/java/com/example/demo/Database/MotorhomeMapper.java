@@ -32,8 +32,17 @@ public class MotorhomeMapper
 
     }
 
-    public void delete() {
+    public void deleteMotorhome(int id) {
 
+        try {
+            String sqlDelete = "Delete from motorhomes where idMotorhome = ? ";
+            statement = connection.prepareStatement(sqlDelete);
+            statement.setInt(1,id);
+            statement.execute();
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
     }
 
     public void update() {

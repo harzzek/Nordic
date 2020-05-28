@@ -20,6 +20,11 @@ public class Motorhomes
 
     public boolean delete(int id)
     {
+        Motorhome mo = motorhomeMapper.find(id);
+        if (mo.getIdMotorhome() == read(id).getIdMotorhome()){
+            motorhomeMapper.deleteMotorhome(id);
+            return true;
+        }
         return false;
     }
 

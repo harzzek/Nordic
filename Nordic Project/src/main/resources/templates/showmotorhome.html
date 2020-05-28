@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Show Motorhome</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 <ul>
@@ -64,9 +65,25 @@
             <td th:text="${motorhome.model}"></td>
             <td th:text="${motorhome.size}"></td>
             <td th:text="${motorhome.status}"></td>
+            <td>
+                <a th:href="@{/deletemotorhome(id=${motorhome.idMotorhome})}"  class="btn btn-del">DELETE</a>
+            </td>
+
+
         </tr>
         </tbody>
     </table>
+
+    <p align="center"><button style="height:30px; width:300px; font-size: large" class="btn-ed" onclick="myFunction()">Total Motorhomes</button></p>
+
+    <p style="color: darkslategrey" align="center" id="demo"></p>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("t01").rows.length - 1;
+            document.getElementById("demo").innerHTML = "Found " + x + " motorhomes in the database.";
+        }
+    </script>
 
 </div>
 

@@ -123,4 +123,20 @@ public class HomeController {
         bookings.create(booking);
         return "redirect:/";
     }
+
+    @GetMapping("/deletemotorhome")
+    public String deletemotorhome(@RequestParam("id") int id) {
+        motorhomes.delete(id);
+        return "redirect:/showmotorhome";
+    }
+
+//    @PostMapping("/deletemotorhome")
+//    public String deletemotorhome(HttpServletRequest request)
+//    {
+//        String id = request.getParameter("idMotorhome");
+//        motorhomes.delete(Integer.parseInt(id));
+//        return "redirect:/showmotorhome";
+//    }
+
+
 }
