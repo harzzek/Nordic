@@ -1,9 +1,6 @@
 package com.example.demo.Database;
 
 import com.example.demo.Model.Booking;
-import com.example.demo.Model.Customer;
-import com.example.demo.Model.Motorhome;
-//import jdk.vm.ci.meta.Local;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -18,22 +15,22 @@ public class BookingMapper
     public void createBooking(Booking booking)
     {
         try {
-            String sql = "INSERT INTO bookings Values(?,?,?,?,?,?)";
-            statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            String sql = "INSERT INTO bookings(bookingDate, bookingEndDate, pickup, dropoff, customerPhone, idMotorhome) Values(?,?,?,?,?,?)";
+            statement = connection.prepareStatement(sql);
             LocalDate startDate = booking.getBookingDate();
             startDate.plusDays(1);
-            statement.setDate(1,Date.valueOf(startDate));
+            statement.setDate(1, Date.valueOf(startDate));
             LocalDate endDate = booking.getBookingEndDate();
             endDate.plusDays(1);
-            statement.setDate(2,Date.valueOf(endDate));
+            statement.setDate(2, Date.valueOf(endDate));
             statement.setString(3,booking.getPickup());
             statement.setString(4,booking.getDropoff());
-            statement.setInt(5,booking.getcustomerPhone());
+            statement.setInt(5,booking.getCustomerPhone());
             statement.setInt(6,booking.getIdMotorhome());
             statement.execute();
         } catch (Exception e)
         {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
 

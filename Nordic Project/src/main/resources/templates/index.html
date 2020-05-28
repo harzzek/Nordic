@@ -59,8 +59,8 @@
         <thread>
         <tr>
             <th>ID</th>
-            <th>firstName</th>
-            <th>lastName</th>
+            <th>Pickup date</th>
+            <th>Dropoff date</th>
             <th>Booking Date</th>
             <th>Motorhome</th>
         </tr>
@@ -71,7 +71,7 @@
             <td th:text="${booking.idBooking}"></td>
             <td th:text="${booking.bookingDate}"></td>
             <td th:text="${booking.bookingEndDate}"></td>
-            <td th:text="${#temporals.format(booking.bookingDate, 'd MMMM yyyy')}"></td><!-- https://www.baeldung.com/dates-in-thymeleaf -->
+            <td th:text="${booking.customerPhone}"></td>
             <td th:text="${booking.idMotorhome}"></td>
         </tr>
         </tbody>

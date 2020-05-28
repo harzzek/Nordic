@@ -46,16 +46,21 @@
 
     <form action="#" th:action="@{/create}" th:object="${booking}" method="post">
         <br>
+        <label>Customer phone found: </label>
+        <td th:text="*{customerPhone}"></td>
+        <p><input type="hidden" th:field="*{customerPhone}"/></p>
+        <br>
+        <br>
         <label>Booking start:</label>
-        <p><input type="date" th:field="${booking.bookingDate}"/></p>
+        <p><input required="required" type="date" th:field="*{bookingDate}"/></p>
         <label>Booking end:</label>
-        <p><input type="date" th:field="${booking.bookingEndDate}"/></p>
+        <p><input required="required" type="date" th:field="*{bookingEndDate}"/></p>
         <label>Dropoff location (Optional):</label>
-        <p><input type="text" th:field="${booking.dropoff}"/></p>
+        <p><input type="text" th:field="*{dropoff}"/></p>
         <label>Pickup location (Optional):</label>
-        <p><input type="text" th:field="${booking.pickup}"/></p>
+        <p><input type="text" th:field="*{pickup}"/></p>
         <label>Motorhome: </label>
-        <p><input type="text" th:field="${booking.idMotorhome}"/></p>
+        <p><input required="required" type="text" th:field="*{idMotorhome}"/></p>
         <div align="center">
          <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
         </div>

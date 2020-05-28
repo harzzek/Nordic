@@ -6,8 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 @Controller
 public class HomeController {
@@ -15,6 +18,7 @@ public class HomeController {
     Customers customers = new Customers();
     Bookings bookings = new Bookings();
     Motorhomes motorhomes = new Motorhomes();
+    Customer customer;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -93,13 +97,12 @@ public class HomeController {
     }
 
     @PostMapping("/verify")
-    public String verify(HttpServletRequest request, Model model)
+    public String verify(@ModelAttribute("customer") Customer customer, Model model)
     {
-        String phoneNr = request.getParameter("customerPhone");
-        int phoneNrInt = Integer.parseInt(phoneNr);
-        if(customers.read(phoneNrInt) != null)
+        int phoneNr = customer.getCustomerPhone();
+        if(customers.read(phoneNr) != null)
         {
-            Customer customer = customers.read(phoneNrInt);
+            this.customer = customers.read(phoneNr);
             model.addAttribute("customer", customer);
             return "redirect:/create";
         } else
@@ -107,35 +110,16 @@ public class HomeController {
     }
 
     @GetMapping("/create")
-    public String create(@ModelAttribute("customer") Customer customer, Model model) {
+    public String create(Model model) {
         Booking booking = new Booking();
-        System.out.println(customer.getCustomerPhone());
         booking.setCustomerPhone(customer.getCustomerPhone());
         model.addAttribute("booking", booking);
         return "create";
     }
 
     @PostMapping("/create")
-    public String createBooking(@ModelAttribute("booking") Booking booking)
+    public String create(@ModelAttribute("booking") Booking booking, HttpServletRequest request)
     {
-//        String bookingDate = request.getParameter("bookingDate");
-//        String split[] = bookingDate.split("-");
-//        int year = Integer.parseInt(split[0]);
-//        int month = Integer.parseInt(split[1]);
-//        int day = Integer.parseInt(split[2]);
-//        LocalDate startDate = LocalDate.of(year, month, day);
-//        String bookingEndDate = request.getParameter("bookingEndDate");
-//        String split2[] = bookingEndDate.split("-");
-//        int year2 = Integer.parseInt(split2[0]);
-//        int month2 = Integer.parseInt(split2[1]);
-//        int day2 = Integer.parseInt(split2[2]);
-//        LocalDate endDate = LocalDate.of(year2, month2, day2);
-//        String pickup = request.getParameter("pickup");
-//        String dropoff = request.getParameter("dropoff");
-//        String phoneNr = request.getParameter("customerPhone");
-//        int realPhoneNr = Integer.parseInt(phoneNr);
-//        String idMotor = request.getParameter("idMotorhome");
-//        int realIdMotor = Integer.parseInt(idMotor);
         bookings.create(booking);
         return "redirect:/";
     }

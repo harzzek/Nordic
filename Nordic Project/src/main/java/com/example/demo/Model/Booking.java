@@ -7,9 +7,10 @@ import java.time.LocalDate;
 public class Booking
 {
     private int idBooking;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
+    @DateTimeFormat(pattern = "yyyy-mm-dd") //todo Tjek om formattet er vigtig, eller Default
     private LocalDate bookingDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd") //todo
     private LocalDate bookingEndDate;
     private String pickup;
     private String dropoff;
@@ -59,15 +60,39 @@ public class Booking
         return dropoff;
     }
 
-    public int getcustomerPhone() {
+    public int getCustomerPhone() {
         return customerPhone;
     }
 
     public void setCustomerPhone(int customerPhone) {
         this.customerPhone = customerPhone;
     }
+
     public int getIdMotorhome() {
         return idMotorhome;
+    }
+    public void setIdBooking(int idBooking) {
+        this.idBooking = idBooking;
+    }
+
+    public void setBookingDate(String bookingDate) {
+        this.bookingDate = LocalDate.parse(bookingDate);
+    }
+
+    public void setBookingEndDate(String bookingEndDate) {
+        this.bookingEndDate = LocalDate.parse(bookingEndDate);
+    }
+
+    public void setPickup(String pickup) {
+        this.pickup = pickup;
+    }
+
+    public void setDropoff(String dropoff) {
+        this.dropoff = dropoff;
+    }
+
+    public void setIdMotorhome(int idMotorhome) {
+        this.idMotorhome = idMotorhome;
     }
 
 }
