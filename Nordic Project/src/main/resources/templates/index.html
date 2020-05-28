@@ -51,6 +51,7 @@
 
     </p>
 
+
     <br><br><br>
 
 
@@ -59,9 +60,9 @@
         <thread>
         <tr>
             <th>ID</th>
-            <th>Pickup date</th>
-            <th>Dropoff date</th>
-            <th>Booking Date</th>
+            <th>Booking Start</th>
+            <th>Booking End</th>
+            <th>Customer #</th>
             <th>Motorhome</th>
         </tr>
         </thread>
@@ -71,7 +72,7 @@
             <td th:text="${booking.idBooking}"></td>
             <td th:text="${booking.bookingDate}"></td>
             <td th:text="${booking.bookingEndDate}"></td>
-            <td th:text="${booking.customerPhone}"></td>
+            <td th:text="+${booking.customerPhone}"></td>
             <td th:text="${booking.idMotorhome}"></td>
         </tr>
         </tbody>
