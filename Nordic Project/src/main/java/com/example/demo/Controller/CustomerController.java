@@ -24,13 +24,13 @@ public class CustomerController {
     }
 
     @GetMapping("/customertemp/create-customer")
-    public String cc(Model model) {
+    public String createCustomer(Model model) {
         model.addAttribute("customers", new Customer());
         return "/customertemp/create-customer";
     }
 
     @PostMapping("/customertemp/create-customer")
-    public String create(HttpServletRequest request) {
+    public String createCustomer(HttpServletRequest request) {
         String fName = request.getParameter("customerFname");
         String lName = request.getParameter("customerLname");
         String phoneNr = request.getParameter("customerPhone");
