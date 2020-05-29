@@ -1,6 +1,6 @@
 package com.example.demo.Database;
 
-import com.example.demo.Model.Booking;
+import com.example.demo.Model.Bookings.Booking;
 
 import java.sql.*;
 import java.time.LocalDate;

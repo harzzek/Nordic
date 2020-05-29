@@ -1,8 +1,7 @@
-package com.example.demo.Model;
+package com.example.demo.Model.Bookings;
 
 import com.example.demo.Database.BookingMapper;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class BookingHandler

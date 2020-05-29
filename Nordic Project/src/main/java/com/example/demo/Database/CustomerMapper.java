@@ -1,6 +1,6 @@
 package com.example.demo.Database;
 
-import com.example.demo.Model.Customer;
+import com.example.demo.Model.Customers.Customer;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

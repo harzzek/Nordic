@@ -1,6 +1,6 @@
 package com.example.demo.Database;
 
-import com.example.demo.Model.Motorhome;
+import com.example.demo.Model.Motorhomes.Motorhome;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
