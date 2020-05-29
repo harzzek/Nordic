@@ -44,7 +44,7 @@
 </ul>
 
 <div class="mnt">
-    <form action="#" th:action="@{/verify}" th:object="${customer}" method="post">
+    <form action="#" th:action="@{/bookingtemp/verify}" th:object="${customer}" method="post">
         <br>
         <label>Phone number of customer</label>
         <p><input type="text" th:field="*{customerPhone}"/></p>

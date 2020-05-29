@@ -34,8 +34,8 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="create-customer">Create Customer</a>
-            <a href="show-customer">Show Customers</a>
+            <a href="../customertemp/create-customer">Create Customer</a>
+            <a href="../customertemp/show-customer">Show Customers</a>
             <a href="#">Link 3</a>
         </div>
     </div>
@@ -43,7 +43,7 @@
 </ul>
 <div class="mnt">
 
-    <form action="#" th:action="@{/custumertemp/create-customer}" th:object="${customers}" method="post">
+    <form action="#" th:action="@{/customertemp/create-customer}" th:object="${customers}" method="post">
         <br>
         <label>First Name:</label>
         <p><input required="required" type="text" th:field="*{customerFname}"/></p>
@@ -52,7 +52,7 @@
         <label>Phone:</label>
         <p><input required="required" type="text" th:field="*{customerPhone}"/></p>
         <label>Email:</label>
-        <p><input type="email" th:field="*{customerEmail}"/></p>
+        <p><input required="required" type="email" th:field="*{customerEmail}"/></p>
         <div align="center">
             <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
         </div>
