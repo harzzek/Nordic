@@ -43,6 +43,6 @@ public class MotorhomeController {
     @GetMapping("/motorhometemp/deletemotorhome")
     public String deletemotorhome(@RequestParam("id") int id) {
         motorhomeHandler.delete(id);
-        return "redirect:/motorhometemp//show-motorhome";
+        return "redirect:/motorhometemp/show-motorhome";
     }
 }
