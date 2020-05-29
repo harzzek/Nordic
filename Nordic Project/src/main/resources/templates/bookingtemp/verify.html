@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>cancel</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
+    <title>Verify</title>
 </head>
 <body>
 <ul>
@@ -42,5 +42,30 @@
     </div>
     <li style="float:right"><a href="about">About</a></li>
 </ul>
+
+    <div class="dropdown">
+        <button class="dropbtn">Customer Options
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="cc">Create Customer</a>
+            <a href="show-customer">Show Customers</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+    <li style="float:right"><a href="about">About</a></li>
+</ul>
+
+<div class="mnt">
+    <form action="#" th:action="@{/verify}" th:object="${customer}" method="post">
+        <br>
+        <label>Phone number of customer</label>
+        <p><input type="text" th:field="*{customerPhone}"/></p>
+        <div align="center">
+            <input type="submit" value="Submit" class="btn btn-create" style="height:30px; width:130px"/>
+        </div>
+    </form>
+
+</div>
 </body>
 </html>

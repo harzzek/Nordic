@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Motorhome</title>
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+<ul>
+    <li><a class="active" href="/static">Home</a></li>
+    <div class="dropdown">
+        <button class="dropbtn">Booking Options
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="verify">Create Booking</a>
+            <a href="cancel">Delete Booking</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Motorhome Options
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="create-motorhome">Create Motorhome</a>
+            <a href="show-motorhome"> Show Motorhome</a>
+            <a href="deletemotorhome">Delete Motorhome</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Customer Options
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="create-customer">Create Customer</a>
+            <a href="show-customer">Show Customers</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+    <li style="float:right"><a href="about">About</a></li>
+</ul>
+<div class="mnt">
+    <br><br><br>
+    <table id="t01" style="border:1px solid black;margin-left:auto;margin-right:auto;">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Size</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="motorhome: ${motorhomes}">
+
+            <td th:text="${motorhome.idMotorhome}"></td>
+            <td th:text="${motorhome.type}"></td>
+            <td th:text="${motorhome.brand}"></td>
+            <td th:text="${motorhome.model}"></td>
+            <td th:text="${motorhome.size}"></td>
+            <td th:text="${motorhome.status}"></td>
+            <td>
+                <a th:href="@{/deletemotorhome(id=${motorhome.idMotorhome})}"  class="btn btn-del">DELETE</a>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+    <p align="center"><button style="height:30px; width:150px;" class="btn btn-ed" onclick="myFunction()">Total Motorhomes</button></p>
+
+    <p style="color: darkslategrey" align="center" id="demo"></p>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("t01").rows.length - 1;
+            document.getElementById("demo").innerHTML = "Found " + x + " motorhomes in the database.";
+        }
+    </script>
+
+</div>
+
+</body>
+</html>

@@ -2,9 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Show Motorhome</title>
-    <link rel="stylesheet" href="style.css">
-
+    <title>Show Customer</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <ul>
@@ -48,42 +47,23 @@
     <table id="t01" style="border:1px solid black;margin-left:auto;margin-right:auto;">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Type</th>
-            <th>Brand</th>
-            <th>Model</th>
-            <th>Size</th>
-            <th>Status</th>
+            <th>Phone</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+
         </tr>
         </thead>
         <tbody>
-        <tr th:each="motorhome: ${motorhomes}">
+        <tr th:each="customer: ${customers}">
 
-            <td th:text="${motorhome.idMotorhome}"></td>
-            <td th:text="${motorhome.type}"></td>
-            <td th:text="${motorhome.brand}"></td>
-            <td th:text="${motorhome.model}"></td>
-            <td th:text="${motorhome.size}"></td>
-            <td th:text="${motorhome.status}"></td>
-            <td>
-                <a th:href="@{/deletemotorhome(id=${motorhome.idMotorhome})}"  class="btn btn-del">DELETE</a>
-            </td>
-
-
+            <td th:text="${customer.customerPhone}"></td>
+            <td th:text="${customer.customerFname}"></td>
+            <td th:text="${customer.customerLname}"></td>
+            <td th:text="${customer.customerEmail}"></td>
         </tr>
         </tbody>
     </table>
-
-    <p align="center"><button style="height:30px; width:150px;" class="btn btn-ed" onclick="myFunction()">Total Motorhomes</button></p>
-
-    <p style="color: darkslategrey" align="center" id="demo"></p>
-
-    <script>
-        function myFunction() {
-            var x = document.getElementById("t01").rows.length - 1;
-            document.getElementById("demo").innerHTML = "Found " + x + " motorhomes in the database.";
-        }
-    </script>
 
 </div>
 

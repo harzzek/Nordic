@@ -17,19 +17,19 @@ public class CustomerController {
     CustomerHandler customerHandler = new CustomerHandler();
     Customer customer;
 
-    @GetMapping("/show-customer")
+    @GetMapping("/customertemp/show-customer")
     public String showcustomer(Model model) {
         model.addAttribute("customers", customerHandler.readAll());
-        return "show-customer";
+        return "/customertemp/show-customer";
     }
 
-    @GetMapping("/create-customer")
+    @GetMapping("/customertemp/create-customer")
     public String cc(Model model) {
         model.addAttribute("customers", new Customer());
-        return "create-customer";
+        return "/customertemp/create-customer";
     }
 
-    @PostMapping("/create-customer")
+    @PostMapping("/customertemp/create-customer")
     public String create(HttpServletRequest request) {
         String fName = request.getParameter("customerFname");
         String lName = request.getParameter("customerLname");
@@ -37,17 +37,17 @@ public class CustomerController {
         int realPhoneNr = Integer.parseInt(phoneNr);
         String email = request.getParameter("customerEmail");
         customerHandler.create(realPhoneNr, fName, lName, email);
-        return "redirect:/show-customer";
+        return "redirect:/customertemp/show-customer";
     }
 
-    @GetMapping("/verify")
+    @GetMapping("/bookingtemp/verify")
     public String verify(Model model)
     {
         model.addAttribute("customer", new Customer());
-        return "verify";
+        return "/bookingtemp/verify";
     }
 
-    @PostMapping("/verify")
+    @PostMapping("/bookingtemp/verify")
     public String verify(@ModelAttribute("customer") Customer customer, Model model)
     {
         int phoneNr = customer.getCustomerPhone();
@@ -55,16 +55,16 @@ public class CustomerController {
         {
             this.customer = customerHandler.read(phoneNr);
             model.addAttribute("customer", customer);
-            return "redirect:/create-booking";
+            return "redirect:/bookingtemp/create-booking";
         } else
             return "redirect:/";
     }
 
-    @GetMapping("/create-booking")
+    @GetMapping("/bookingtemp/create-booking")
     public String create(Model model) {
         Booking booking = new Booking();
         booking.setCustomerPhone(customer.getCustomerPhone());
         model.addAttribute("booking", booking);
-        return "create-booking";
+        return "/bookingtemp/create-booking";
     }
 }

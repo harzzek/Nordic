@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Show Customer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Create Customer</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <ul>
@@ -43,29 +42,21 @@
     <li style="float:right"><a href="about">About</a></li>
 </ul>
 <div class="mnt">
-    <br><br><br>
-    <table id="t01" style="border:1px solid black;margin-left:auto;margin-right:auto;">
-        <thead>
-        <tr>
-            <th>Phone</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="customer: ${customers}">
-
-            <td th:text="${customer.customerPhone}"></td>
-            <td th:text="${customer.customerFname}"></td>
-            <td th:text="${customer.customerLname}"></td>
-            <td th:text="${customer.customerEmail}"></td>
-        </tr>
-        </tbody>
-    </table>
-
+    <form action="#" th:action="@{/custumertemp/create-customer}" th:object="${customers}" method="post">
+        <br>
+        <label>First Name:</label>
+        <p><input required="required" type="text" th:field="*{customerFname}"/></p>
+        <label>Last Name:</label>
+        <p><input required="required" type="text" th:field="*{customerLname}"/></p>
+        <label>Phone:</label>
+        <p><input required="required" type="text" th:field="*{customerPhone}"/></p>
+        <label>Email:</label>
+        <p><input type="email" th:field="*{customerEmail}"/></p>
+        <div align="center">
+            <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
+        </div>
+    </form>
 </div>
-
 </body>
 </html>

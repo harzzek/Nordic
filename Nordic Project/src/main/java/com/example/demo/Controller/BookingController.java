@@ -29,7 +29,7 @@ public class BookingController {
         return "about";
     }
 
-    @PostMapping("/create-booking")
+    @PostMapping("/bookingtemp/create-booking")
     public String create(@ModelAttribute("booking") Booking booking)
     {
         bookingHandler.create(booking);

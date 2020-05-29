@@ -15,13 +15,13 @@ public class MotorhomeController {
 
     MotorhomeHandler motorhomeHandler = new MotorhomeHandler();
 
-    @GetMapping("/create-motorhome")
+    @GetMapping("/motorhometemp/create-motorhome")
     public String createMotorhome(Model model) {
         model.addAttribute("motorhome", new Motorhome());
-        return "create-motorhome";
+        return "/motorhometemp/create-motorhome";
     }
 
-    @PostMapping("/create-motorhome")
+    @PostMapping("/motorhometemp/create-motorhome")
     public String createMotorhome(HttpServletRequest request) {
         String type = request.getParameter("type");
         String brand = request.getParameter("brand");
@@ -32,17 +32,17 @@ public class MotorhomeController {
         motorhomeHandler.create(type, brand, model, realSize, status);
         return "redirect:/show-motorhome";
     }
-    @GetMapping("/show-motorhome")
+    @GetMapping("/motorhometemp/show-motorhome")
     public String showmotorhome(Model model)
     {
         model.addAttribute("motorhomes", motorhomeHandler.readAll());
-        return "show-motorhome";
+        return "/motorhometemp/show-motorhome";
     }
 
 
-    @GetMapping("/deletemotorhome")
+    @GetMapping("/motorhometemp/deletemotorhome")
     public String deletemotorhome(@RequestParam("id") int id) {
         motorhomeHandler.delete(id);
-        return "redirect:/show-motorhome";
+        return "redirect:/motorhometemp//show-motorhome";
     }
 }
