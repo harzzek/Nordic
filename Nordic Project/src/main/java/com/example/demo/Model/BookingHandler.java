@@ -5,7 +5,7 @@ import com.example.demo.Database.BookingMapper;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Bookings
+public class BookingHandler
 {
     BookingMapper bookingMapper = new BookingMapper();
 

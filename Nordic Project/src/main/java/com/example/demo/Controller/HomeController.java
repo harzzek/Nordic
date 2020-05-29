@@ -9,20 +9,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 
 @Controller
 public class HomeController {
 
-    Customers customers = new Customers();
-    Bookings bookings = new Bookings();
-    Motorhomes motorhomes = new Motorhomes();
+    CustomerHandler customerHandler = new CustomerHandler();
+    BookingHandler bookingHandler = new BookingHandler();
+    MotorhomeHandler motorhomeHandler = new MotorhomeHandler();
     Customer customer;
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("bookings", bookings.readAll());
+        model.addAttribute("bookings", bookingHandler.readAll());
         return "index";
     }
     //testLOL213
@@ -42,36 +40,36 @@ public class HomeController {
         return "about";
     }
 
-    @GetMapping("/showcustomer")
+    @GetMapping("/show-customer")
     public String showcustomer(Model model) {
-        model.addAttribute("customers", customers.readAll());
-        return "showcustomer";
+        model.addAttribute("customers", customerHandler.readAll());
+        return "show-customer";
     }
 
-    @GetMapping("/cc")
+    @GetMapping("/create-customer")
     public String cc(Model model) {
         model.addAttribute("customers", new Customer());
-        return "cc";
+        return "create-customer";
     }
 
-    @PostMapping("/cc")
+    @PostMapping("/create-customer")
     public String create(HttpServletRequest request) {
         String fName = request.getParameter("customerFname");
         String lName = request.getParameter("customerLname");
         String phoneNr = request.getParameter("customerPhone");
         int realPhoneNr = Integer.parseInt(phoneNr);
         String email = request.getParameter("customerEmail");
-        customers.create(realPhoneNr, fName, lName, email);
-        return "redirect:/showcustomer";
+        customerHandler.create(realPhoneNr, fName, lName, email);
+        return "redirect:/show-customer";
     }
 
-    @GetMapping("/motorhome")
+    @GetMapping("/create-motorhome")
     public String createMotorhome(Model model) {
         model.addAttribute("motorhome", new Motorhome());
-        return "motorhome";
+        return "create-motorhome";
     }
 
-    @PostMapping("/motorhome")
+    @PostMapping("/create-motorhome")
     public String createMotorhome(HttpServletRequest request) {
         String type = request.getParameter("type");
         String brand = request.getParameter("brand");
@@ -79,14 +77,14 @@ public class HomeController {
         String size = request.getParameter("size");
         int realSize = Integer.parseInt(size);
         String status = request.getParameter("status");
-        motorhomes.create(type, brand, model, realSize, status);
-        return "redirect:/showmotorhome";
+        motorhomeHandler.create(type, brand, model, realSize, status);
+        return "redirect:/show-motorhome";
     }
-    @GetMapping("/showmotorhome")
+    @GetMapping("/show-motorhome")
     public String showmotorhome(Model model)
     {
-        model.addAttribute("motorhomes", motorhomes.readAll());
-        return "showmotorhome";
+        model.addAttribute("motorhomes", motorhomeHandler.readAll());
+        return "show-motorhome";
     }
 
     @GetMapping("/verify")
@@ -100,41 +98,41 @@ public class HomeController {
     public String verify(@ModelAttribute("customer") Customer customer, Model model)
     {
         int phoneNr = customer.getCustomerPhone();
-        if(customers.read(phoneNr) != null)
+        if(customerHandler.read(phoneNr) != null)
         {
-            this.customer = customers.read(phoneNr);
+            this.customer = customerHandler.read(phoneNr);
             model.addAttribute("customer", customer);
-            return "redirect:/create";
+            return "redirect:/create-booking";
         } else
         return "redirect:/";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/create-booking")
     public String create(Model model) {
         Booking booking = new Booking();
         booking.setCustomerPhone(customer.getCustomerPhone());
         model.addAttribute("booking", booking);
-        return "create";
+        return "create-booking";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/create-booking")
     public String create(@ModelAttribute("booking") Booking booking, HttpServletRequest request)
     {
-        bookings.create(booking);
+        bookingHandler.create(booking);
         return "redirect:/";
     }
 
     @GetMapping("/deletemotorhome")
     public String deletemotorhome(@RequestParam("id") int id) {
-        motorhomes.delete(id);
-        return "redirect:/showmotorhome";
+        motorhomeHandler.delete(id);
+        return "redirect:/show-motorhome";
     }
 
 //    @PostMapping("/deletemotorhome")
 //    public String deletemotorhome(HttpServletRequest request)
 //    {
 //        String id = request.getParameter("idMotorhome");
-//        motorhomes.delete(Integer.parseInt(id));
+//        motorhomeHandler.delete(Integer.parseInt(id));
 //        return "redirect:/showmotorhome";
 //    }
 

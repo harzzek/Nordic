@@ -4,7 +4,8 @@ import com.example.demo.Database.CustomerMapper;
 
 import java.util.List;
 
-public class Customers {
+public class CustomerHandler
+{
 
     CustomerMapper customerMapper = new CustomerMapper();
 

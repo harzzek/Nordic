@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Create Customer</title>
+    <title>Motorhomes</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="create">Create Booking</a>
+            <a href="verify">Create Booking</a>
             <a href="cancel">Delete Booking</a>
             <a href="#">Link 3</a>
         </div>
@@ -23,9 +23,9 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="motorhome">Create Motorhome</a>
-            <a href="showmotorhome"> Show Motorhome</a>
-            <a href="#">Link 3</a>
+            <a href="create-motorhome">Create Motorhome</a>
+            <a href="show-motorhome"> Show Motorhome</a>
+            <a href="deletemotorhome">Delete Motorhome</a>
         </div>
     </div>
 
@@ -34,8 +34,8 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="cc">Create Customer</a>
-            <a href="showcustomer">Show Customers</a>
+            <a href="create-customer">Create Customer</a>
+            <a href="show-customer">Show Customers</a>
             <a href="#">Link 3</a>
         </div>
     </div>
@@ -43,16 +43,19 @@
 </ul>
 <div class="mnt">
 
-    <form action="#" th:action="@{/cc}" th:object="${customers}" method="post">
+    <form action="#" th:action="@{/create-motorhome}" th:object="${motorhome}" method="post">
         <br>
-        <label>First Name:</label>
-        <p><input required="required" type="text" th:field="*{customerFname}"/></p>
-        <label>Last Name:</label>
-        <p><input required="required" type="text" th:field="*{customerLname}"/></p>
-        <label>Phone:</label>
-        <p><input required="required" type="text" th:field="*{customerPhone}"/></p>
-        <label>Email:</label>
-        <p><input type="email" th:field="*{customerEmail}"/></p>
+        <label>Type:</label>
+        <p><input required="required" type="text" th:field="*{type}"/></p>
+        <label>Brand:</label>
+        <p><input required="required" type="text" th:field="*{brand}"/></p>
+        <label>Model:</label>
+        <p><input required="required" type="text" th:field="*{model}"/></p>
+        <label>Size:</label>
+        <p><input required="required" type="number" th:field="*{size}"/></p>
+        <label>Status:</label>
+        <p><input required="required" type="text" th:field="*{status}"/></p>
+        <br>
         <div align="center">
             <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
         </div>

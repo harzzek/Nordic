@@ -4,7 +4,7 @@ import com.example.demo.Database.MotorhomeMapper;
 
 import java.util.ArrayList;
 
-public class Motorhomes
+public class MotorhomeHandler
 {
     MotorhomeMapper motorhomeMapper = new MotorhomeMapper();
 
