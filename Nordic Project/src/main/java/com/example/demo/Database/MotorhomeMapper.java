@@ -2,10 +2,8 @@ package com.example.demo.Database;
 
 import com.example.demo.Model.Motorhomes.Motorhome;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class MotorhomeMapper
@@ -30,6 +28,37 @@ public class MotorhomeMapper
             System.out.println(e);
         }
 
+    }
+
+    public ArrayList<Motorhome> avaiableMotorhomes(LocalDate startDate, LocalDate endDate)
+    {
+        ArrayList<Motorhome> motorhomeArray = new ArrayList();
+        try {
+            String sqlQuary1 = "SELECT * FROM motorhomes where exists (SELECT idMotorhome from bookings WHERE (?,?) between bookingDate and bookingEndDate)";
+            statement.setDate(1, Date.valueOf(startDate));
+            statement.setDate(2, Date.valueOf(endDate));
+            statement = connection.prepareStatement(sqlQuary1);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next())
+            {
+                int idMotorhome = rs.getInt("idMotorhome");
+                String type = rs.getString("type");
+                String brand = rs.getString("brand");
+                String model = rs.getString("model");
+                int size = rs.getInt("size");
+                String status = rs.getString("status");
+
+
+                motorhomeArray.add(new Motorhome(idMotorhome,  type, brand, model, size, status));
+            }
+
+        } catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
+        return  motorhomeArray;
     }
 
     public void deleteMotorhome(int id) {

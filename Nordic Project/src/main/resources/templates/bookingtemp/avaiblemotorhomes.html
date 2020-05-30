@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create booking</title>
+    <title>avaibleMotorhomes</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -44,24 +44,18 @@
 </ul>
 <div class="mnt">
 
-    <form action="#" th:action="@{/bookingtemp/create-booking}" th:object="${booking}" method="post">
-        <br>
-        <label>Customer phone found: </label>
-        <td th:text="*{customerPhone}"></td>
-        <p><input type="hidden" th:field="*{customerPhone}"/></p>
-        <br>
-        <br>
-        <label>Booking start:</label>
-        <p><input required="required" type="date" th:field="*{bookingDate}"/></p>
-        <label>Booking end:</label>
-        <p><input required="required" type="date" th:field="*{bookingEndDate}"/></p>
-        <label>Dropoff location (Optional):</label>
-        <p><input type="text" th:field="*{dropoff}"/></p>
-        <label>Pickup location (Optional):</label>
-        <p><input type="text" th:field="*{pickup}"/></p>
+    <form action="#" th:action="@{/bookingtemp/avaiblemotorhomes}" th:object="${booking}" method="post">
+        <ul>
+            <li th:each="motorhome : ${motorhomes}">
+                <div>
+                    <input required="required" type="checkbox" th:field="*{idMotorhome}" th:value="${motorhome.idMotorhome}">
+                    <label th:text="${motorhome.getModel()}"></label>
+                </div>
+            </li>
+        </ul>
         <label>Motorhome: </label>
         <div align="center">
-         <input type="submit" value="Submit" class="btn btn-create" style="height:30px; width:130px"/>
+            <input type="submit" value="Create" class="btn btn-create" style="height:30px; width:130px"/>
         </div>
     </form>
 </div>
