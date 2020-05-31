@@ -4,6 +4,7 @@ import com.example.demo.Model.Bookings.Booking;
 import com.example.demo.Model.Bookings.BookingHandler;
 import com.example.demo.Model.Customers.Customer;
 import com.example.demo.Model.Customers.CustomerHandler;
+import com.example.demo.Model.Motorhomes.Motorhome;
 import com.example.demo.Model.Motorhomes.MotorhomeHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ public class BookingController {
     MotorhomeHandler motorhomeHandler = new MotorhomeHandler();
     CustomerHandler customerHandler = new CustomerHandler();
     Customer customer;
-    Booking booking;
+    Booking booking; //todo
 
     @GetMapping("/")
     public String index(Model model) {
@@ -74,16 +75,17 @@ public class BookingController {
     @GetMapping("/bookingtemp/availablemotorhomes")
     public String availableMotorhomes(Model model)
     {
-        Booking booking1 = booking;
-        model.addAttribute("motorhomes", motorhomeHandler.findAvailable(booking1.getBookingDate(), booking1.getBookingEndDate()));
-        model.addAttribute("booking", booking1);
+        model.addAttribute("motorhomes", motorhomeHandler.findAvailable(booking.getBookingDate(), booking.getBookingEndDate()));
+        model.addAttribute("motorhome", new Motorhome());
         return "/bookingtemp/availablemotorhomes";
     }
 
     @PostMapping("/bookingtemp/availablemotorhomes")
-    public String availableMotorhomes(@ModelAttribute("booking") Booking booking)
+    public String availableMotorhomes(@ModelAttribute("motorhome") Motorhome motorhome)
     {
-        bookingHandler.create(booking);
+        booking.setIdMotorhome(motorhome.getIdMotorhome());
+        Booking booking1 = booking;
+        bookingHandler.create(booking1); // TODO
         return "redirect:/";
     }
 

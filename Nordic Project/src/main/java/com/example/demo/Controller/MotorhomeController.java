@@ -28,8 +28,7 @@ public class MotorhomeController {
         String model = request.getParameter("model");
         String size = request.getParameter("size");
         int realSize = Integer.parseInt(size);
-        String status = request.getParameter("status");
-        motorhomeHandler.create(type, brand, model, realSize, status);
+        motorhomeHandler.create(type, brand, model, realSize);
         return "redirect:/show-motorhome";
     }
     @GetMapping("/motorhometemp/show-motorhome")

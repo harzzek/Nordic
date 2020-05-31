@@ -15,14 +15,13 @@ public class MotorhomeMapper
     public void create(Motorhome motorhome)
     {
         try {
-            String sql = "INSERT INTO motorhomes Values(DEFAULT,?,?,?,?,?)";
+            String sql = "INSERT INTO motorhomes Values(DEFAULT,?,?,?,?)";
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             statement.setString(1,motorhome.getType());
             statement.setString(2,motorhome.getBrand());
             statement.setString(3,motorhome.getModel());
             statement.setInt(4,motorhome.getSize());
-            statement.setString(5,motorhome.getStatus());
             statement.execute();
         } catch (Exception e)
         {
@@ -91,10 +90,9 @@ public class MotorhomeMapper
                 String brand = rs.getString("brand");
                 String model = rs.getString("model");
                 int size = rs.getInt("size");
-                String status = rs.getString("status");
 
 
-                motorhomeList.add(new Motorhome(idMotorhome,  type, brand, model, size, status));
+                motorhomeList.add(new Motorhome(idMotorhome,  type, brand, model, size));
             }
 
         } catch (Exception e)
@@ -120,9 +118,8 @@ public class MotorhomeMapper
                 String brand = rs.getString("brand");
                 String model = rs.getString("model");
                 int size = rs.getInt("size");
-                String status = rs.getString("status");
 
-                theMotorhome = new Motorhome(idMotorhome,type,brand,model,size,status);
+                theMotorhome = new Motorhome(idMotorhome,type,brand,model,size);
             }
 
         } catch (Exception e)

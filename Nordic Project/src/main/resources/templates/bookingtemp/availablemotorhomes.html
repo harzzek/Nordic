@@ -44,13 +44,13 @@
 </ul>
 <div class="mnt">
 
-    <form action="#" th:action="@{/bookingtemp/availablemotorhomes}" th:object="${booking}" method="post">
+    <form action="#" th:action="@{/bookingtemp/availablemotorhomes}" th:object="${motorhome}" method="post">
         <label>Motorhome: </label>
         <br>
         <ul>
             <li th:each="motorhome : ${motorhomes}">
                 <div>
-                    <input type="checkbox" th:field="*{idMotorhome}" th:value="${motorhome.idMotorhome}">
+                    <input required="required" type="radio" th:field="*{idMotorhome}" th:value="${motorhome.idMotorhome}">
                     <label th:text="${motorhome.getModel()}"></label>
                 </div>
             </li>
