@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-
 @Controller
 public class BookingController {
 
@@ -70,20 +68,20 @@ public class BookingController {
     public String create(@ModelAttribute("booking") Booking booking)
     {
         this.booking = booking;
-        return "redirect:/bookingtemp/avaiblemotorhomes";
+        return "redirect:/bookingtemp/availablemotorhomes";
     }
 
-    @GetMapping("/bookingtemp/avaiblemotorhomes")
-    public String avaibleMotorhomes(Model model)
+    @GetMapping("/bookingtemp/availablemotorhomes")
+    public String availableMotorhomes(Model model)
     {
         Booking booking1 = booking;
         model.addAttribute("motorhomes", motorhomeHandler.findAvailable(booking1.getBookingDate(), booking1.getBookingEndDate()));
         model.addAttribute("booking", booking1);
-        return "/bookingtemp/avaiblemotorhomes";
+        return "availablemotorhomes";
     }
 
-    @PostMapping("/bookingtemp/avaiblemotorhomes")
-    public String avaibleMotorhomes(@ModelAttribute("booking") Booking booking)
+    @PostMapping("/bookingtemp/availablemotorhomes")
+    public String availableMotorhomes(@ModelAttribute("booking") Booking booking)
     {
         bookingHandler.create(booking);
         return "redirect:/";
