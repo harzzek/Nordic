@@ -77,7 +77,7 @@ public class BookingController {
         Booking booking1 = booking;
         model.addAttribute("motorhomes", motorhomeHandler.findAvailable(booking1.getBookingDate(), booking1.getBookingEndDate()));
         model.addAttribute("booking", booking1);
-        return "availablemotorhomes";
+        return "/bookingtemp/availablemotorhomes";
     }
 
     @PostMapping("/bookingtemp/availablemotorhomes")

@@ -53,7 +53,6 @@
             <th>Brand</th>
             <th>Model</th>
             <th>Size</th>
-            <th>Status</th>
         </tr>
         </thead>
         <tbody>
@@ -64,7 +63,6 @@
             <td th:text="${motorhome.brand}"></td>
             <td th:text="${motorhome.model}"></td>
             <td th:text="${motorhome.size}"></td>
-            <td th:text="${motorhome.status}"></td>
             <td>
                 <a th:href="@{/motorhometemp/deletemotorhome(id=${motorhome.idMotorhome})}"  class="btn btn-del">DELETE</a>
             </td>

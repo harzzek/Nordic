@@ -18,10 +18,8 @@ public class BookingMapper
             String sql = "INSERT INTO bookings(bookingDate, bookingEndDate, pickup, dropoff, customerPhone, idMotorhome) Values(?,?,?,?,?,?)";
             statement = connection.prepareStatement(sql);
             LocalDate startDate = booking.getBookingDate();
-            startDate.plusDays(1);
             statement.setDate(1, Date.valueOf(startDate));
             LocalDate endDate = booking.getBookingEndDate();
-            endDate.plusDays(1);
             statement.setDate(2, Date.valueOf(endDate));
             statement.setString(3,booking.getPickup());
             statement.setString(4,booking.getDropoff());

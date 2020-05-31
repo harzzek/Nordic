@@ -1,5 +1,6 @@
 package com.example.demo.Database;
 
+import com.example.demo.Model.Bookings.Booking;
 import com.example.demo.Model.Motorhomes.Motorhome;
 
 import java.sql.*;
@@ -32,30 +33,28 @@ public class MotorhomeMapper
 
     public ArrayList<Motorhome> availableMotorhomes(LocalDate startDate, LocalDate endDate)
     {
-        ArrayList<Motorhome> motorhomeArray = new ArrayList();
-        try {
-            String sqlQuary1 = "SELECT * FROM motorhomes where exists (SELECT idMotorhome from bookings WHERE (?,?) between bookingDate and bookingEndDate)";
-            statement.setDate(1, Date.valueOf(startDate));
-            statement.setDate(2, Date.valueOf(endDate));
-            statement = connection.prepareStatement(sqlQuary1);
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next())
-            {
-                int idMotorhome = rs.getInt("idMotorhome");
-                String type = rs.getString("type");
-                String brand = rs.getString("brand");
-                String model = rs.getString("model");
-                int size = rs.getInt("size");
-                String status = rs.getString("status");
-
-
-                motorhomeArray.add(new Motorhome(idMotorhome,  type, brand, model, size, status));
-            }
-
-        } catch (Exception e)
+        BookingMapper bookingMapper = new BookingMapper();
+        ArrayList<Motorhome> motorhomeArray = list();
+        ArrayList<Booking> bookingArrayList =  bookingMapper.listOfBookings();
+        LocalDate bookingStartDate;
+        LocalDate bookingEndDate;
+        for (Booking booking:bookingArrayList)
         {
-            System.out.println(e);
+
+            for (Motorhome motorhome: motorhomeArray)
+            {
+
+                if (booking.getIdMotorhome() == motorhome.getIdMotorhome())
+                {
+                    bookingStartDate = booking.getBookingDate();
+                    bookingEndDate = booking.getBookingEndDate();
+                    if (!bookingStartDate.isBefore(startDate) && !bookingEndDate.isAfter(endDate))
+                    {
+                        motorhomeArray.remove(motorhome);
+                        break;
+                    }
+                }
+            }
         }
 
         return  motorhomeArray;
