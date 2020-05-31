@@ -30,7 +30,7 @@ public class MotorhomeMapper
 
     }
 
-    public ArrayList<Motorhome> avaiableMotorhomes(LocalDate startDate, LocalDate endDate)
+    public ArrayList<Motorhome> availableMotorhomes(LocalDate startDate, LocalDate endDate)
     {
         ArrayList<Motorhome> motorhomeArray = new ArrayList();
         try {

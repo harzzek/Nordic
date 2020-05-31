@@ -21,7 +21,7 @@ public class MotorhomeHandler
 
     public ArrayList<Motorhome> findAvailable(LocalDate startdate, LocalDate enddate)
     {
-        return motorhomeMapper.avaiableMotorhomes(startdate, enddate);
+        return motorhomeMapper.availableMotorhomes(startdate, enddate);
     }
 
     public boolean delete(int id)
