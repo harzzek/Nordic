@@ -5,6 +5,7 @@ import com.example.demo.Model.Motorhomes.MotorhomeHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,7 +30,7 @@ public class MotorhomeController {
         String size = request.getParameter("size");
         int realSize = Integer.parseInt(size);
         motorhomeHandler.create(type, brand, model, realSize);
-        return "redirect:/show-motorhome";
+        return "redirect:/motorhometemp/show-motorhome";
     }
     @GetMapping("/motorhometemp/show-motorhome")
     public String showmotorhome(Model model)
@@ -40,8 +41,16 @@ public class MotorhomeController {
 
 
     @GetMapping("/motorhometemp/deletemotorhome")
-    public String deletemotorhome(@RequestParam("id") int id) {
-        motorhomeHandler.delete(id);
+    public String deletemotorhome(Model model, @RequestParam("id") int id) {
+       model.addAttribute("motorhome", motorhomeHandler.read(id));
+        //motorhomeHandler.delete(id);
+        return "/motorhometemp/deletemotorhome";
+    }
+
+    @PostMapping("/motorhometemp/deletemotorhome")
+    public String deletemotorhome(@ModelAttribute("motorhome")Motorhome motorhome)
+    {
+        motorhomeHandler.delete(motorhome.getIdMotorhome());
         return "redirect:/motorhometemp/show-motorhome";
     }
 }
