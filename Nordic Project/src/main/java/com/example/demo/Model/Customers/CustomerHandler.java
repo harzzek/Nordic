@@ -19,8 +19,7 @@ public class CustomerHandler
         return customerMapper.list();
     }
 
-    public void create(int customerPhone, String fname, String lname, String email){
-        Customer customer = new Customer( customerPhone, fname, lname, email);
+    public void create(Customer customer) {
         customerMapper.create(customer);
     }
 

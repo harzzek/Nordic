@@ -54,7 +54,7 @@ public class BookingController {
             model.addAttribute("customer", customer);
             return "redirect:/bookingtemp/create-booking";
         } else
-            return "redirect:/";
+            return "redirect:/customertemp/create-customer";
     }
 
     @GetMapping("/bookingtemp/create-booking")

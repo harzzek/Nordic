@@ -39,12 +39,12 @@ public class CustomerMapper extends DatabaseManager
     }
 
 
-    public List<Customer> list() {
+    public ArrayList<Customer> list() {
         ArrayList<Customer> customerList = new ArrayList();
         try {
             String sqlQuary1 = "SELECT * from customers";
             statement = getConnection().prepareStatement(sqlQuary1);
-            ResultSet rs = statement.executeQuery(sqlQuary1);
+            ResultSet rs = statement.executeQuery();
 
             while (rs.next())
             {
