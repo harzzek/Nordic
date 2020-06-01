@@ -13,6 +13,12 @@ public class CustomerController {
 
     CustomerHandler customerHandler = new CustomerHandler();
 
+
+    @GetMapping("/error")
+    public String error() {
+        return "error";
+    }
+
     @GetMapping("/customertemp/show-customer")
     public String showcustomer(Model model) {
         model.addAttribute("customers", customerHandler.readAll());
