@@ -71,6 +71,7 @@ public class Booking
     public int getIdMotorhome() {
         return idMotorhome;
     }
+
     public void setIdBooking(int idBooking) {
         this.idBooking = idBooking;
     }

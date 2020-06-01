@@ -23,13 +23,8 @@ public class MotorhomeController {
     }
 
     @PostMapping("/motorhometemp/create-motorhome")
-    public String createMotorhome(HttpServletRequest request) {
-        String type = request.getParameter("type");
-        String brand = request.getParameter("brand");
-        String model = request.getParameter("model");
-        String size = request.getParameter("size");
-        int realSize = Integer.parseInt(size);
-        motorhomeHandler.create(type, brand, model, realSize);
+    public String createMotorhome(@ModelAttribute("motorhome") Motorhome motorhome) {
+        motorhomeHandler.create(motorhome);
         return "redirect:/motorhometemp/show-motorhome";
     }
     @GetMapping("/motorhometemp/show-motorhome")
