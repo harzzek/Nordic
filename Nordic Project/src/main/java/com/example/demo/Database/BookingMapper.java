@@ -10,6 +10,7 @@ public class BookingMapper
 {
     PreparedStatement statement;
     Connection connection = DatabaseManager.getConnection();
+    DatabaseManager db = new DatabaseManager();
 
 
     public void createBooking(Booking booking)
@@ -28,6 +29,7 @@ public class BookingMapper
             statement.setInt(5,booking.getCustomerPhone());
             statement.setInt(6,booking.getIdMotorhome());
             statement.execute();
+            db.closeCon(statement,connection);
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -68,11 +70,13 @@ public class BookingMapper
 
                 bookingList.add(new Booking(idBooking,realStartDate,realEndDate,pickup,dropoff,customerPhone,idMotorhome));
             }
+            db.closeCon(rs, statement,connection);
 
         } catch (Exception e)
         {
             System.out.println(e);
         }
+
 
         return bookingList;
 
@@ -101,6 +105,7 @@ public class BookingMapper
 
                 theBooking = new Booking(idBooking,realStartDate,realEndDate,pickup,dropoff,customerPhone,idMotorhome);
             }
+            db.closeCon(rs, statement,connection);
 
         } catch (Exception e)
         {

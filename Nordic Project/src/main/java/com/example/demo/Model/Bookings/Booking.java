@@ -1,5 +1,6 @@
 package com.example.demo.Model.Bookings;
 
+import com.example.demo.Model.ExceptionPackage.BookingException;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -76,12 +77,22 @@ public class Booking
         this.idBooking = idBooking;
     }
 
-    public void setBookingDate(String bookingDate) {
-        this.bookingDate = LocalDate.parse(bookingDate);
+    public void setBookingDate(String bookingDate) throws BookingException {
+        LocalDate localDate = LocalDate.parse(bookingDate);
+        if(localDate.isBefore(LocalDate.now()))
+        {
+            throw new BookingException("Date cannot be before today: " + bookingDate);
+        } else
+        this.bookingDate = localDate;
     }
 
-    public void setBookingEndDate(String bookingEndDate) {
-        this.bookingEndDate = LocalDate.parse(bookingEndDate);
+    public void setBookingEndDate(String bookingEndDate) throws BookingException {
+        LocalDate localDate = LocalDate.parse(bookingEndDate);
+        if(localDate.isBefore(LocalDate.now()))
+        {
+            throw new BookingException("Date cannot be before today: " + bookingEndDate);
+        } else
+            this.bookingDate = localDate;
     }
 
     public void setPickup(String pickup) {

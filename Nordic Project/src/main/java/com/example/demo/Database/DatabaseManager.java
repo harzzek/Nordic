@@ -4,9 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 public class DatabaseManager
@@ -43,6 +41,17 @@ public class DatabaseManager
             System.out.println( "\n" + url + "" + user + "" + password);
         }
         return connection;
+    }
+
+    public static void closeCon(ResultSet rs, PreparedStatement statement, Connection connection) throws SQLException {
+        rs.close();
+        statement.close();
+        connection.close();
+    }
+
+    public static void closeCon(PreparedStatement statement, Connection connection) throws SQLException {
+        statement.close();
+        connection.close();
     }
 
 }
