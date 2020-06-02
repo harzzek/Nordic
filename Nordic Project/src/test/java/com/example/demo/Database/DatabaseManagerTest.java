@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,9 +24,16 @@ class DatabaseManagerTest {
     }
 
     @Test
-    void closeStatementTest() throws SQLException {
+    void closeStatementAndConnectionTest() throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT * from bookings");
         DatabaseManager.closeCon(statement, connection);
+        assertTrue(connection.isClosed());
         assertTrue(statement.isClosed());
+    }
+    @Test
+    void openConnectionAndStatementTest() throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM customers");
+        assertFalse(connection.isClosed());
+        assertFalse(statement.isClosed());
     }
 }

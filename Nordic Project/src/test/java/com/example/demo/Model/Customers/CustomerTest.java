@@ -26,7 +26,7 @@ class CustomerTest {
     }
 
     @Test
-    void customerWithNumberInName() throws CustomerException {
+    void customerWithNumberInName() {
 
         // Act
         try {

@@ -2,27 +2,27 @@ package com.example.demo.Database;
 
 import com.example.demo.Model.Customers.Customer;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerMapper extends DatabaseManager
+public class CustomerMapper
 {
     PreparedStatement statement;
-
+    Connection connection;
+    DatabaseManager db = new DatabaseManager();
     public void create(Customer customer) {
         try {
+            connection = DatabaseManager.getConnection();
             String sql = "INSERT INTO customers Values(?,?,?,?)";
-            statement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             statement.setInt(1,customer.getCustomerPhone());
             statement.setString(2,customer.getCustomerFname());
             statement.setString(3,customer.getCustomerLname());
             statement.setString(4,customer.getCustomerEmail());
             statement.execute();
+            db.closeCon(statement,connection);
         } catch (SQLException e)
         {
             System.out.println(e);
@@ -43,8 +43,9 @@ public class CustomerMapper extends DatabaseManager
     public ArrayList<Customer> list() {
         ArrayList<Customer> customerList = new ArrayList();
         try {
+            connection = DatabaseManager.getConnection();
             String sqlQuary1 = "SELECT * from customers";
-            statement = getConnection().prepareStatement(sqlQuary1);
+            statement = connection.prepareStatement(sqlQuary1);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next())
@@ -56,6 +57,7 @@ public class CustomerMapper extends DatabaseManager
 
                 customerList.add(new Customer(customerPhone, fname, lname, email));
             }
+            db.closeCon(rs,statement,connection);
 
         } catch (SQLException e)
         {
@@ -70,8 +72,9 @@ public class CustomerMapper extends DatabaseManager
         ResultSet rs;
         Customer theCustomer = null;
         try {
+            connection = DatabaseManager.getConnection();
             String sql = "SELECT * from customers where customerPhone = ?";
-            PreparedStatement statement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1,phoneNr);
 
             rs = statement.executeQuery();
@@ -84,6 +87,7 @@ public class CustomerMapper extends DatabaseManager
 
                 theCustomer = new Customer(customerPhone,fname,lname,email);
             }
+            db.closeCon(rs,statement,connection);
 
         } catch (SQLException e)
         {

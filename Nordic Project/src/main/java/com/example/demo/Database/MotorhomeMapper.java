@@ -10,11 +10,14 @@ import java.util.ArrayList;
 public class MotorhomeMapper
 {
     PreparedStatement statement;
-    Connection connection = DatabaseManager.getConnection();
+    Connection connection;
+    DatabaseManager db = new DatabaseManager();
 
     public void create(Motorhome motorhome)
     {
+
         try {
+            connection = DatabaseManager.getConnection();
             String sql = "INSERT INTO motorhomes Values(DEFAULT,?,?,?,?)";
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -23,6 +26,7 @@ public class MotorhomeMapper
             statement.setString(3,motorhome.getModel());
             statement.setInt(4,motorhome.getSize());
             statement.execute();
+            db.closeCon(statement,connection);
         } catch (SQLException e)
         {
             System.out.println(e);
@@ -62,10 +66,12 @@ public class MotorhomeMapper
     public void deleteMotorhome(int id) {
 
         try {
+            connection = DatabaseManager.getConnection();
             String sqlDelete = "Delete from motorhomes where idMotorhome = ? ";
             statement = connection.prepareStatement(sqlDelete);
             statement.setInt(1,id);
             statement.execute();
+            db.closeCon(statement,connection);
         } catch (SQLException e)
         {
             System.out.println(e);
@@ -79,6 +85,7 @@ public class MotorhomeMapper
     public ArrayList<Motorhome> list() {
         ArrayList<Motorhome> motorhomeList = new ArrayList();
         try {
+            connection = DatabaseManager.getConnection();
             String sqlQuary1 = "SELECT * from motorhomes";
             statement = connection.prepareStatement(sqlQuary1);
             ResultSet rs = statement.executeQuery();
@@ -94,6 +101,7 @@ public class MotorhomeMapper
 
                 motorhomeList.add(new Motorhome(idMotorhome,  type, brand, model, size));
             }
+            db.closeCon(rs,statement,connection);
 
         } catch (SQLException e)
         {
@@ -107,6 +115,7 @@ public class MotorhomeMapper
         ResultSet rs;
         Motorhome theMotorhome = null;
         try {
+            connection = DatabaseManager.getConnection();
             String sql = "SELECT * from motorhomes where idMotorhome = ?";
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setInt(1,id);
@@ -121,6 +130,8 @@ public class MotorhomeMapper
 
                 theMotorhome = new Motorhome(idMotorhome,type,brand,model,size);
             }
+            db.closeCon(rs,statement,connection);
+
 
         } catch (SQLException e)
         {

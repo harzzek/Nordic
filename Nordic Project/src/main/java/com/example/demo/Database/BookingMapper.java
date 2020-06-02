@@ -9,13 +9,14 @@ import java.util.ArrayList;
 public class BookingMapper
 {
     PreparedStatement statement;
-    Connection connection = DatabaseManager.getConnection();
+    Connection connection;
     DatabaseManager db = new DatabaseManager();
 
 
     public void createBooking(Booking booking)
     {
         try {
+            connection = DatabaseManager.getConnection();
             String sql = "INSERT INTO bookings(bookingDate, bookingEndDate, pickup, dropoff, customerPhone, idMotorhome) Values(?,?,?,?,?,?)";
             statement = connection.prepareStatement(sql);
             LocalDate startDate = booking.getBookingDate();
@@ -51,6 +52,7 @@ public class BookingMapper
     public ArrayList<Booking> listOfBookings()
     {
         ArrayList<Booking> bookingList = new ArrayList();
+        connection = DatabaseManager.getConnection();
         try {
             String sqlQuary1 = "SELECT * from bookings";
             statement = connection.prepareStatement(sqlQuary1);
@@ -86,6 +88,7 @@ public class BookingMapper
     {
         ResultSet rs;
         Booking theBooking = null;
+        connection = DatabaseManager.getConnection();
         try {
             String sql = "SELECT * from bookings where customerPhone = ?";
             statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
