@@ -34,7 +34,7 @@ public class MotorhomeMapper
 
     }
 
-    public ArrayList<Motorhome> avaiableMotorhomes(LocalDate startDate, LocalDate endDate)
+    public ArrayList<Motorhome> avaiableMotorhomes(Booking createdBooking)
     {
         BookingMapper bookingMapper = new BookingMapper();
         ArrayList<Motorhome> motorhomeArray = list();
@@ -51,7 +51,7 @@ public class MotorhomeMapper
                 {
                     bookingStartDate = booking.getBookingDate();
                     bookingEndDate = booking.getBookingEndDate();
-                    if (!bookingStartDate.isBefore(startDate) && !bookingEndDate.isAfter(endDate) || startDate.isBefore(bookingEndDate) && bookingStartDate.isBefore(endDate))
+                    if (!bookingStartDate.isBefore(createdBooking.getBookingDate()) && !bookingEndDate.isAfter(createdBooking.getBookingEndDate()) || createdBooking.getBookingDate().isBefore(bookingEndDate) && bookingStartDate.isBefore(createdBooking.getBookingEndDate()))
                     {
                         motorhomeArray.remove(motorhome);
                         break;

@@ -75,9 +75,9 @@ public class BookingController {
     @GetMapping("/bookingtemp/availablemotorhomes")
     public String availableMotorhomes(Model model)
     {
-        if( motorhomeHandler.findAvailable(booking.getBookingDate(), booking.getBookingEndDate()) != null)
+        if( motorhomeHandler.findAvailable(booking) != null)
         {
-            model.addAttribute("motorhomes", motorhomeHandler.findAvailable(booking.getBookingDate(), booking.getBookingEndDate()));
+            model.addAttribute("motorhomes", motorhomeHandler.findAvailable(booking));
             model.addAttribute("motorhome", new Motorhome());
             return "/bookingtemp/availablemotorhomes";
         } else

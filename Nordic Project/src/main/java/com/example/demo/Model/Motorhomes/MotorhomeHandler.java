@@ -1,6 +1,7 @@
 package com.example.demo.Model.Motorhomes;
 
 import com.example.demo.Database.MotorhomeMapper;
+import com.example.demo.Model.Bookings.Booking;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,9 +20,9 @@ public class MotorhomeHandler
         return motorhomeMapper.list();
     }
 
-    public ArrayList<Motorhome> findAvailable(LocalDate startdate, LocalDate enddate)
+    public ArrayList<Motorhome> findAvailable(Booking booking)
     {
-        return motorhomeMapper.avaiableMotorhomes(startdate, enddate);
+        return motorhomeMapper.avaiableMotorhomes(booking);
     }
 
     public boolean delete(int id)
