@@ -51,7 +51,7 @@ public class MotorhomeMapper
                 {
                     bookingStartDate = booking.getBookingDate();
                     bookingEndDate = booking.getBookingEndDate();
-                    if (!bookingStartDate.isBefore(startDate) && !bookingEndDate.isAfter(endDate))
+                    if (!bookingStartDate.isBefore(startDate) && !bookingEndDate.isAfter(endDate) || startDate.isBefore(bookingEndDate) && bookingStartDate.isBefore(endDate))
                     {
                         motorhomeArray.remove(motorhome);
                         break;
