@@ -1,5 +1,7 @@
 package com.example.demo.Model.Motorhomes;
 
+import com.example.demo.Model.ExceptionPackage.MotorhomeException;
+
 public class Motorhome
 {
 
@@ -70,8 +72,11 @@ public class Motorhome
         this.model = model;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setSize(int size) throws MotorhomeException {
+
+        if(size > 6 || size < 2) {
+            throw new MotorhomeException("Vehicle can't be larger than 6 or smaller than 2: " + size);
+        } else this.size = size;
     }
 
 

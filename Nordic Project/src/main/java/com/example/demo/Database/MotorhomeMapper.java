@@ -23,7 +23,7 @@ public class MotorhomeMapper
             statement.setString(3,motorhome.getModel());
             statement.setInt(4,motorhome.getSize());
             statement.execute();
-        } catch (Exception e)
+        } catch (SQLException e)
         {
             System.out.println(e);
         }
@@ -66,7 +66,7 @@ public class MotorhomeMapper
             statement = connection.prepareStatement(sqlDelete);
             statement.setInt(1,id);
             statement.execute();
-        } catch (Exception e)
+        } catch (SQLException e)
         {
             System.out.println(e);
         }
@@ -95,7 +95,7 @@ public class MotorhomeMapper
                 motorhomeList.add(new Motorhome(idMotorhome,  type, brand, model, size));
             }
 
-        } catch (Exception e)
+        } catch (SQLException e)
         {
             System.out.println(e);
         }
@@ -122,7 +122,7 @@ public class MotorhomeMapper
                 theMotorhome = new Motorhome(idMotorhome,type,brand,model,size);
             }
 
-        } catch (Exception e)
+        } catch (SQLException e)
         {
             System.out.println(e);
         }

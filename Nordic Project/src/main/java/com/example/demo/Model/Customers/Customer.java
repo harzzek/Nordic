@@ -51,7 +51,7 @@ public class Customer {
         //        . symbol matches any character except newline.                                            Any character (may or may not match line terminators)
         //        * repeats the character behind it 0 or more times.                                        X, zero or more times
         //        \d matches any digit. The extra \ in \\d is used to escape the backslash from the string. A digit: [0-9]
-        if(customerFname.matches(".*\\d"))
+        if(customerFname.matches(".*\\d.*"))
         {
             throw new CustomerException("Name cannot include numbers: " + customerFname);
         } else
@@ -59,7 +59,7 @@ public class Customer {
     }
 
     public void setCustomerLname(String customerLname) throws CustomerException{
-        if(customerLname.matches(".*\\d"))
+        if(customerLname.matches(".*\\d.*"))
         {
             throw new CustomerException("Name cannot include numbers: " + customerFname);
         } else

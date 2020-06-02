@@ -54,4 +54,8 @@ public class DatabaseManager
         connection.close();
     }
 
+    public static void closeCon(Connection connection) throws SQLException {
+        connection.close();
+    }
+
 }

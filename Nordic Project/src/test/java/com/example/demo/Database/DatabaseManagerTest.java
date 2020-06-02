@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,11 +20,14 @@ class DatabaseManagerTest {
     }
 
     @AfterEach
-    void tearDown() {
-
+    void tearDown() throws SQLException {
+        DatabaseManager.closeCon(connection);
     }
 
     @Test
-    void getConnection() {
+    void closeStatementTest() throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("SELECT * from bookings");
+        DatabaseManager.closeCon(statement, connection);
+        assertTrue(statement.isClosed());
     }
 }

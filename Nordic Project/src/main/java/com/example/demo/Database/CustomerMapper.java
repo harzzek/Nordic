@@ -4,6 +4,7 @@ import com.example.demo.Model.Customers.Customer;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class CustomerMapper extends DatabaseManager
             statement.setString(3,customer.getCustomerLname());
             statement.setString(4,customer.getCustomerEmail());
             statement.execute();
-        } catch (Exception e)
+        } catch (SQLException e)
         {
             System.out.println(e);
         }
@@ -56,7 +57,7 @@ public class CustomerMapper extends DatabaseManager
                 customerList.add(new Customer(customerPhone, fname, lname, email));
             }
 
-        } catch (Exception e)
+        } catch (SQLException e)
         {
             System.out.println(e);
         }
@@ -84,7 +85,7 @@ public class CustomerMapper extends DatabaseManager
                 theCustomer = new Customer(customerPhone,fname,lname,email);
             }
 
-        } catch (Exception e)
+        } catch (SQLException e)
         {
             System.out.println(e);
         }
