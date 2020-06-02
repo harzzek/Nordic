@@ -6,15 +6,17 @@ import java.util.List;
 
 public class BookingHandler
 {
-    BookingMapper bookingMapper = new BookingMapper();
+    BookingMapper bookingMapper;
 
     public Booking read(int phoneNr)
     {
+        bookingMapper = new BookingMapper();
         return bookingMapper.findBooking(phoneNr);
     }
 
     public List<Booking> readAll()
     {
+        bookingMapper = new BookingMapper();
         return bookingMapper.listOfBookings();
     }
 
@@ -34,6 +36,7 @@ public class BookingHandler
     }
 
     public void create(Booking booking) {
+        bookingMapper = new BookingMapper();
        bookingMapper.createBooking(booking);
     }
 }
