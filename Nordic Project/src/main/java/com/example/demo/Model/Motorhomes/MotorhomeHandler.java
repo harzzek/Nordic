@@ -3,7 +3,6 @@ package com.example.demo.Model.Motorhomes;
 import com.example.demo.Database.MotorhomeMapper;
 import com.example.demo.Model.Bookings.Booking;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class MotorhomeHandler
