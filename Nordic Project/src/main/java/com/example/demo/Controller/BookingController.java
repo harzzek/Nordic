@@ -19,7 +19,7 @@ public class BookingController {
     MotorhomeHandler motorhomeHandler = new MotorhomeHandler();
     CustomerHandler customerHandler = new CustomerHandler();
     Customer customer;
-    Booking booking; //todo
+    Booking booking;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -90,7 +90,7 @@ public class BookingController {
     {
         booking.setIdMotorhome(motorhome.getIdMotorhome());
         Booking booking1 = booking;
-        bookingHandler.create(booking1); // TODO
+        bookingHandler.create(booking1);
         return "redirect:/";
     }
 

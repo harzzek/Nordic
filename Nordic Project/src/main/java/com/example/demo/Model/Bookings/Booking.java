@@ -83,7 +83,7 @@ public class Booking
         {
             throw new BookingException("Date cannot be before today: " + bookingDate);
         } else
-        this.bookingDate = localDate;
+            this.bookingDate = localDate;
     }
 
     public void setBookingEndDate(String bookingEndDate) throws BookingException {
