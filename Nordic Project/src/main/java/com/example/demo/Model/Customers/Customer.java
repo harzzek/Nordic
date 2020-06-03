@@ -61,7 +61,7 @@ public class Customer {
     public void setCustomerLname(String customerLname) throws CustomerException{
         if(customerLname.matches(".*\\d.*"))
         {
-            throw new CustomerException("Name cannot include numbers: " + customerFname);
+            throw new CustomerException("Name cannot include numbers: " + customerLname);
         } else
         this.customerLname = customerLname;
     }
