@@ -42,5 +42,5 @@ public class BookingHandler
        bookingMapper.createBooking(booking);
     }
 
-    //What up dude
+
 }
