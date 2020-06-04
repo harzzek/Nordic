@@ -4,6 +4,8 @@ import com.example.demo.Database.BookingMapper;
 
 import java.util.List;
 
+//Kodet af Jonas
+
 public class BookingHandler
 {
     BookingMapper bookingMapper;

@@ -7,6 +7,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+//Kodet af Emil & Jonas
+
 public class MotorhomeMapper
 {
     PreparedStatement statement;

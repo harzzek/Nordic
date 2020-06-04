@@ -6,6 +6,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+//Kodet af Hans Christian & Jonas
+
 public class BookingMapper
 {
     PreparedStatement statement;

@@ -2,6 +2,8 @@ package com.example.demo.Model.Motorhomes;
 
 import com.example.demo.Model.ExceptionPackage.MotorhomeException;
 
+//Kodet af Benjamin & Emil
+
 public class Motorhome
 {
 

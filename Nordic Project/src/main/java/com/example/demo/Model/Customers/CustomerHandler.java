@@ -4,6 +4,8 @@ import com.example.demo.Database.CustomerMapper;
 
 import java.util.List;
 
+//Kodet af Benjamin
+
 public class CustomerHandler
 {
 

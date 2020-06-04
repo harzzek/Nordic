@@ -5,6 +5,8 @@ import com.example.demo.Model.Bookings.Booking;
 
 import java.util.ArrayList;
 
+//Kodet af Emil
+
 public class MotorhomeHandler
 {
     MotorhomeMapper motorhomeMapper = new MotorhomeMapper();

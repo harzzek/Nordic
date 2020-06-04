@@ -2,6 +2,8 @@ package com.example.demo.Model.Customers;
 
 import com.example.demo.Model.ExceptionPackage.CustomerException;
 
+//Kodet af Benjamin & Hans Christian
+
 public class Customer {
 
     private int customerPhone;

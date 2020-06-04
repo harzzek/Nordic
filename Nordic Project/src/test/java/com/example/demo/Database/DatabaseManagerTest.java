@@ -10,6 +10,8 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//Kodet som gruppe
+
 class DatabaseManagerTest {
 
     Connection connection;

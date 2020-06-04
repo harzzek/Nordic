@@ -5,6 +5,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+//Kodet af Hans Christian & Jonas
+
 public class Booking
 {
     private int idBooking;

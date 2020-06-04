@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//Kodet som gruppe
+
 class MotorhomeMapperTest {
 
     @Test

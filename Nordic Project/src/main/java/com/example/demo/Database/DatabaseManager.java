@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
+//Kodet som gruppe
+
 public class DatabaseManager
 {
 

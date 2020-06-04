@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
+//Kodet af Emil
+
 @Controller
 public class MotorhomeController {
 
